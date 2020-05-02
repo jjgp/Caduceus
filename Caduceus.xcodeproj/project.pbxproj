@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */; };
 		4A491FA797E40E3CF008E439 /* Pods_CaduceusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */; };
+		B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */; };
 		B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0825C245DA33400423BD9 /* AppDelegate.swift */; };
 		B7B0825F245DA33400423BD9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0825E245DA33400423BD9 /* SceneDelegate.swift */; };
 		B7B08261245DA33400423BD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B08260245DA33400423BD9 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 		4F05040715A56A7CE564E35E /* Pods-Caduceus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.release.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.release.xcconfig"; sourceTree = "<group>"; };
 		7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caduceus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC82697BC1DEDD7D29E668A3 /* Pods-CaduceusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.release.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.release.xcconfig"; sourceTree = "<group>"; };
+		B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
 		B7B08259245DA33400423BD9 /* Caduceus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caduceus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B0825C245DA33400423BD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B0825E245DA33400423BD9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,12 +111,13 @@
 		B7B0825B245DA33400423BD9 /* Caduceus */ = {
 			isa = PBXGroup;
 			children = (
+				B7B0826A245DA33700423BD9 /* Info.plist */,
 				B7B0825C245DA33400423BD9 /* AppDelegate.swift */,
+				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
 				B7B0825E245DA33400423BD9 /* SceneDelegate.swift */,
 				B7B08260245DA33400423BD9 /* ViewController.swift */,
 				B7B08265245DA33700423BD9 /* Assets.xcassets */,
 				B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */,
-				B7B0826A245DA33700423BD9 /* Info.plist */,
 			);
 			path = Caduceus;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			files = (
 				B7B08261245DA33400423BD9 /* ViewController.swift in Sources */,
 				B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */,
+				B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */,
 				B7B0825F245DA33400423BD9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

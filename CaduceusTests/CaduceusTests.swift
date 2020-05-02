@@ -6,11 +6,10 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import XCTest
 @testable import Caduceus
+import XCTest
 
 class CaduceusTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,5 +29,4 @@ class CaduceusTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

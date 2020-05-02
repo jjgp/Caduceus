@@ -8,10 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .blue
     }
-
 }
+
+#if DEBUG
+import SwiftUI
+
+struct ViewControllerPreviews: PreviewProvider {
+    static var previews: some View {
+        ViewController().previewWrapper
+    }
+}
+#endif
