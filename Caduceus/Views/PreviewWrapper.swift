@@ -9,21 +9,33 @@
 #if DEBUG
 import SwiftUI
 
-extension UIViewController {
-    var previewWrapper: PreviewWrapper {
-        .wrapped(self)
+extension UIView {
+    var previewWrapper: UIViewPreviewWrapper {
+        UIViewPreviewWrapper(view: self)
     }
 }
 
-enum PreviewWrapper: UIViewControllerRepresentable {
-    case wrapped(UIViewController)
+struct UIViewPreviewWrapper: UIViewRepresentable {
+    let view: UIView
+
+    func makeUIView(context: Context) -> UIView {
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}
+
+extension UIViewController {
+    var previewWrapper: UIViewControllerPreviewWrapper {
+        UIViewControllerPreviewWrapper(viewController: self)
+    }
+}
+
+struct UIViewControllerPreviewWrapper: UIViewControllerRepresentable {
+    let viewController: UIViewController
 
     func makeUIViewController(context: Context) -> UIViewController {
-        if case let .wrapped(viewController) = self {
-            return viewController
-        } else {
-            fatalError("Encountered an unreachable PreviewWrapper case")
-        }
+        viewController
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
