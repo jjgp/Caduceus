@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -111,11 +111,10 @@
 		B7B0825B245DA33400423BD9 /* Caduceus */ = {
 			isa = PBXGroup;
 			children = (
+				B7F864CD245DF6E300C8DD16 /* Views */,
 				B7B0826A245DA33700423BD9 /* Info.plist */,
 				B7B0825C245DA33400423BD9 /* AppDelegate.swift */,
-				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
 				B7B0825E245DA33400423BD9 /* SceneDelegate.swift */,
-				B7B08260245DA33400423BD9 /* ViewController.swift */,
 				B7B08265245DA33700423BD9 /* Assets.xcassets */,
 				B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */,
 			);
@@ -129,6 +128,23 @@
 				B7B08275245DA33700423BD9 /* Info.plist */,
 			);
 			path = CaduceusTests;
+			sourceTree = "<group>";
+		};
+		B7F864CD245DF6E300C8DD16 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7F864CE245DF6EF00C8DD16 /* Controllers */,
+				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B7F864CE245DF6EF00C8DD16 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7B08260245DA33400423BD9 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
