@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */; };
+		4A491FA797E40E3CF008E439 /* Pods_CaduceusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */; };
 		B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0825C245DA33400423BD9 /* AppDelegate.swift */; };
 		B7B0825F245DA33400423BD9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0825E245DA33400423BD9 /* SceneDelegate.swift */; };
 		B7B08261245DA33400423BD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B08260245DA33400423BD9 /* ViewController.swift */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaduceusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F05040715A56A7CE564E35E /* Pods-Caduceus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.release.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.release.xcconfig"; sourceTree = "<group>"; };
+		7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caduceus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC82697BC1DEDD7D29E668A3 /* Pods-CaduceusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.release.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7B08259245DA33400423BD9 /* Caduceus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caduceus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B0825C245DA33400423BD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B0825E245DA33400423BD9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		B7B0826F245DA33700423BD9 /* CaduceusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaduceusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B08273245DA33700423BD9 /* CaduceusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaduceusTests.swift; sourceTree = "<group>"; };
 		B7B08275245DA33700423BD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +61,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A491FA797E40E3CF008E439 /* Pods_CaduceusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01BD5AAFAF20F285394AB08D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */,
+				43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		613767C8D1E0EF4831062637 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */,
+				4F05040715A56A7CE564E35E /* Pods-Caduceus.release.xcconfig */,
+				C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */,
+				AC82697BC1DEDD7D29E668A3 /* Pods-CaduceusTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B7B08250245DA33400423BD9 = {
 			isa = PBXGroup;
 			children = (
 				B7B0825B245DA33400423BD9 /* Caduceus */,
 				B7B08272245DA33700423BD9 /* CaduceusTests */,
 				B7B0825A245DA33400423BD9 /* Products */,
+				613767C8D1E0EF4831062637 /* Pods */,
+				01BD5AAFAF20F285394AB08D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7B08278245DA33700423BD9 /* Build configuration list for PBXNativeTarget "Caduceus" */;
 			buildPhases = (
+				779E6C703AE6EB7BD27E5AE5 /* [CP] Check Pods Manifest.lock */,
 				B7B08255245DA33400423BD9 /* Sources */,
 				B7B08256245DA33400423BD9 /* Frameworks */,
 				B7B08257245DA33400423BD9 /* Resources */,
+				B7AD9FE2245DC4A4007D100C /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -123,6 +157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7B0827B245DA33700423BD9 /* Build configuration list for PBXNativeTarget "CaduceusTests" */;
 			buildPhases = (
+				B73A576FA7C6AFD303EDDBD3 /* [CP] Check Pods Manifest.lock */,
 				B7B0826B245DA33700423BD9 /* Sources */,
 				B7B0826C245DA33700423BD9 /* Frameworks */,
 				B7B0826D245DA33700423BD9 /* Resources */,
@@ -194,6 +229,71 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		779E6C703AE6EB7BD27E5AE5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Caduceus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B73A576FA7C6AFD303EDDBD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CaduceusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7AD9FE2245DC4A4007D100C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B7B08255245DA33400423BD9 /* Sources */ = {
@@ -360,6 +460,7 @@
 		};
 		B7B08279245DA33700423BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +479,7 @@
 		};
 		B7B0827A245DA33700423BD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F05040715A56A7CE564E35E /* Pods-Caduceus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +498,7 @@
 		};
 		B7B0827C245DA33700423BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +521,7 @@
 		};
 		B7B0827D245DA33700423BD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC82697BC1DEDD7D29E668A3 /* Pods-CaduceusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
