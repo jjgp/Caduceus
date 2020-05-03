@@ -1,7 +1,9 @@
 .DS_Store
+*.swp
 **/xcuserdata/*
 **/*.xccheckout
 **/*.xcscmblueprint
 build/
+CTX/InfoPlistPrefix.h
 DerivedData/
 Pods/

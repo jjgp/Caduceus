@@ -16,6 +16,8 @@
 		B7B08266245DA33700423BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7B08265245DA33700423BD9 /* Assets.xcassets */; };
 		B7B08269245DA33700423BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */; };
 		B7B08274245DA33700423BD9 /* CaduceusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B08273245DA33700423BD9 /* CaduceusTests.swift */; };
+		B7E8AFFA245EF48200877194 /* CTX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFF9245EF48200877194 /* CTX.swift */; };
+		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		B7B0826F245DA33700423BD9 /* CaduceusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaduceusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B08273245DA33700423BD9 /* CaduceusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaduceusTests.swift; sourceTree = "<group>"; };
 		B7B08275245DA33700423BD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7E8AFF9245EF48200877194 /* CTX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTX.swift; sourceTree = "<group>"; };
+		B7E8AFFF245F1B6B00877194 /* DKVL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKVL.swift; sourceTree = "<group>"; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,9 +117,11 @@
 			children = (
 				B7B0826A245DA33700423BD9 /* Info.plist */,
 				B7B0825C245DA33400423BD9 /* AppDelegate.swift */,
+				B7E8AFF9245EF48200877194 /* CTX.swift */,
 				B7B0825E245DA33400423BD9 /* SceneDelegate.swift */,
 				B7B08265245DA33700423BD9 /* Assets.xcassets */,
 				B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */,
+				B7E8AFFE245F1B1300877194 /* Library */,
 				B7F864CD245DF6E300C8DD16 /* Views */,
 			);
 			path = Caduceus;
@@ -130,10 +136,18 @@
 			path = CaduceusTests;
 			sourceTree = "<group>";
 		};
+		B7E8AFFE245F1B1300877194 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B7E8AFFF245F1B6B00877194 /* DKVL.swift */,
+				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		B7F864CD245DF6E300C8DD16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
 				B7F864CE245DF6EF00C8DD16 /* Controllers */,
 			);
 			path = Views;
@@ -336,7 +350,9 @@
 				B7B08261245DA33400423BD9 /* ViewController.swift in Sources */,
 				B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */,
 				B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */,
+				B7E8AFFA245EF48200877194 /* CTX.swift in Sources */,
 				B7B0825F245DA33400423BD9 /* SceneDelegate.swift in Sources */,
+				B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,11 +508,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
 				INFOPLIST_FILE = Caduceus/Info.plist;
+				INFOPLIST_PREFIX_HEADER = CTX/InfoPlistPrefix.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=50 -Xfrontend -warn-long-function-bodies=50";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=75 -Xfrontend -warn-long-function-bodies=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjgp.Caduceus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -512,11 +530,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
 				INFOPLIST_FILE = Caduceus/Info.plist;
+				INFOPLIST_PREFIX_HEADER = CTX/InfoPlistPrefix.h;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=50 -Xfrontend -warn-long-function-bodies=50";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=75 -Xfrontend -warn-long-function-bodies=75";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjgp.Caduceus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

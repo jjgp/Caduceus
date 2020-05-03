@@ -1,8 +1,17 @@
+custom_rules:
+  immutable_ctx:
+    included: ".*\\.swift"
+    excluded: "CaduceusTests/*\\.swift"
+    name: "Immutable CTX"
+    regex: "(ctx =)"
+    capture_group: 0
+    message: "CTX should not be modified in source."
+    severity: error
+excluded:
+  Pods
 opt_in_rules:
   - fatal_error_message
   - sorted_imports
   - unused_import
   - vertical_whitespace_closing_braces
   - yoda_condition
-excluded:
-  Pods

@@ -6,12 +6,39 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import AWSCognitoIdentityProvider
+import AWSMobileClient
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // MARK: - AWS Configuration
+        let (constants) = ctx
+        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
+        let awsRegionType: AWSRegionType = constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
+        let serviceConfiguration = AWSServiceConfiguration(
+            region: awsRegionType,
+            credentialsProvider: nil
+        )
+        let poolConfiguration = AWSCognitoIdentityUserPoolConfiguration(
+            clientId: constants.cognitoIdentityUserPoolAppClientId,
+            clientSecret: constants.cognitoIdentityUserPoolAppClientSecret,
+            poolId: constants.cognitoIdentityUserPoolId
+        )
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
+                                            userPoolConfiguration: poolConfiguration,
+                                            forKey: constants.awsCognitoUserPoolsSignInProviderKey)
+        AWSMobileClient.default().initialize { (userState, error) in
+            if let userState = userState {
+                print("UserState: \(userState.rawValue)")
+            } else if let error = error {
+                print("error: \(error.localizedDescription)")
+            }
+        }
+        // MARK: -
+
         return true
     }
 

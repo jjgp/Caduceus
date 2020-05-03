@@ -56,5 +56,42 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>AWS</key>
+	<dict>
+		<key>CognitoUserPoolsSigninProviderKey</key>
+		<string>AWS_COGNITOUSERPOOLSSIGNINPROVIDERKEY</string>
+		<key>CredentialsProvider</key>
+		<dict>
+			<key>CognitoIdentity</key>
+			<dict>
+				<key>Default</key>
+				<dict>
+					<key>PoolId</key>
+					<string>AWS_CREDENTIALSPROVIDER_COGNITOIDENTITY_DEFAULT_POOLID</string>
+					<key>Region</key>
+					<string>AWS_CREDENTIALSPROVIDER_COGNITOIDENTITY_DEFAULT_REGION</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>IdentityManager</key>
+		<dict>
+			<key>Default</key>
+			<dict/>
+		</dict>
+		<key>CognitoUserPool</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>AppClientSecret</key>
+				<string>AWS_COGNITOUSERPOOL_DEFAULT_APPCLIENTSECRET</string>
+				<key>AppClientId</key>
+				<string>AWS_COGNITOUSERPOOL_DEFAULT_APPCLIENTID</string>
+				<key>PoolId</key>
+				<string>AWS_COGNITOUSERPOOL_DEFAULT_POOLID</string>
+				<key>Region</key>
+				<string>AWS_COGNITOUSERPOOL_DEFAULT_REGION</string>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>
