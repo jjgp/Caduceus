@@ -33,27 +33,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     func setupAWSDependencies() {
-        let (constants) = ctx
-
         #if DEBUG
         AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
         #else
         AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.off
         #endif
 
-        let awsRegionType: AWSRegionType = constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
+        let awsRegionType: AWSRegionType = ctx.constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
         let serviceConfiguration = AWSServiceConfiguration(
             region: awsRegionType,
             credentialsProvider: nil
         )
         let poolConfiguration = AWSCognitoIdentityUserPoolConfiguration(
-            clientId: constants.cognitoIdentityUserPoolAppClientId,
-            clientSecret: constants.cognitoIdentityUserPoolAppClientSecret,
-            poolId: constants.cognitoIdentityUserPoolId
+            clientId: ctx.constants.cognitoIdentityUserPoolAppClientId,
+            clientSecret: ctx.constants.cognitoIdentityUserPoolAppClientSecret,
+            poolId: ctx.constants.cognitoIdentityUserPoolId
         )
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
                                             userPoolConfiguration: poolConfiguration,
-                                            forKey: constants.awsCognitoUserPoolsSignInProviderKey)
+                                            forKey: ctx.constants.awsCognitoUserPoolsSignInProviderKey)
 
         AWSMobileClient.default().initialize { (userState, error) in
             if let userState = userState {

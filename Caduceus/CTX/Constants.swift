@@ -1,13 +1,10 @@
 //
-//  CTX.swift
+//  Constants.swift
 //  Caduceus
 //
 //  Created by Jason Prasad on 5/3/20.
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
-
-// MARK: - SwiftLint Disable
-// swiftlint:disable immutable_ctx
 
 import Foundation
 
@@ -33,6 +30,3 @@ struct Constants {
         cognitoIdentityPoolId = infoDictionary.AWS!.CredentialsProvider!.CognitoIdentity!.Default!.PoolId!.stringValue!
     }
 }
-
-typealias CTX = (Constants)
-var ctx = (Constants())
