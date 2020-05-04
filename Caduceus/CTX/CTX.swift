@@ -10,6 +10,7 @@
 // swiftlint:disable immutable_ctx
 
 typealias CTX = (
+    AppCoordinator,
     Constants,
     I10n,
     StyleGuide
@@ -17,6 +18,7 @@ typealias CTX = (
 
 var ctx = (
     constants: Constants(),
+    coordinator: AppCoordinator(),
     i10n: I10n(),
     styleGuide: StyleGuide()
 )

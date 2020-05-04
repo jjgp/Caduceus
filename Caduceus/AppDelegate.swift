@@ -14,11 +14,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        setupAWSDependencies()
+        #if DEBUG
+        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
+        #else
+        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.off
+        #endif
+
+        registerWithAWSCognito()
+
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UISceneSession Lifecycle
 
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
@@ -27,18 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
+
+    // MARK: - Lifecycle
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        AWSDDLog.flushLog()
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        AWSDDLog.flushLog()
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        AWSDDLog.flushLog()
+    }
 }
 
 // MARK: - AWS
 
 extension AppDelegate {
-    func setupAWSDependencies() {
-        #if DEBUG
-        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
-        #else
-        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.off
-        #endif
-
+    func registerWithAWSCognito() {
         let awsRegionType: AWSRegionType = ctx.constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
         let serviceConfiguration = AWSServiceConfiguration(
             region: awsRegionType,
@@ -52,13 +67,5 @@ extension AppDelegate {
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
                                             userPoolConfiguration: poolConfiguration,
                                             forKey: ctx.constants.awsCognitoUserPoolsSignInProviderKey)
-
-        AWSMobileClient.default().initialize { (userState, error) in
-            if let userState = userState {
-                print("UserState: \(userState.rawValue)")
-            } else if let error = error {
-                print("error: \(error.localizedDescription)")
-            }
-        }
     }
 }

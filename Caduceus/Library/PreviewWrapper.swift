@@ -19,7 +19,7 @@ struct UIViewPreviewWrapper: UIViewRepresentable {
     let view: UIView
 
     func makeUIView(context: Context) -> UIView {
-        return view
+        view
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {}

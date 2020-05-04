@@ -17,10 +17,12 @@ struct Colors {
     var background: UIColor { .white }
     var buttonColor: UIColor { .systemBlue }
     var buttonFont: UIColor { .white }
+    var line: UIColor { .systemGray }
 }
 
 struct Pixels {
     var buttonRounding: CGFloat = 22
     var fieldHeight: CGFloat = 44
     var fieldSpacing: CGFloat = 18
+    var line: CGFloat = 1
 }

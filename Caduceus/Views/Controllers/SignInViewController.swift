@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     }
     static func textField(_ placeholder: String) -> UITextField {
         let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        textField.borderStyle = .bezel
         textField.placeholder = placeholder
         return textField
     }
@@ -27,6 +27,11 @@ class SignInViewController: UIViewController {
     let passwordTextField = SignInViewController.textField(.t(\.password))
     let signInButton = SignInViewController.button(.t(\.signIn))
     let signUpButton = SignInViewController.button(.t(\.signUp))
+    let signUpDividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ctx.styleGuide.colors.line
+        return view
+    }()
     let verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -35,6 +40,7 @@ class SignInViewController: UIViewController {
         stackView.spacing = ctx.styleGuide.pixels.fieldSpacing
         return stackView
     }()
+    var viewModel: SignInViewModelType = SignInViewModel()
     let usernameTextField = SignInViewController.textField(.t(\.username))
 
     override func viewDidLoad() {
@@ -56,8 +62,8 @@ extension SignInViewController {
         signUpButton.addTarget(self, action: #selector(signUp), for: UIControl.Event.touchUpInside)
     }
 
-    func addConstraints() {
-        func constrainArrangedSubview(_ subview: UIView) {
+    func addFieldConstraints() {
+        func constrainField(_ subview: UIView) {
             subview.translatesAutoresizingMaskIntoConstraints = false
             view.addConstraints([
                 NSLayoutConstraint(item: subview,
@@ -76,11 +82,13 @@ extension SignInViewController {
                                    constant: 0)
             ])
         }
-        constrainArrangedSubview(passwordTextField)
-        constrainArrangedSubview(usernameTextField)
-        constrainArrangedSubview(signInButton)
-        constrainArrangedSubview(signUpButton)
+        constrainField(passwordTextField)
+        constrainField(usernameTextField)
+        constrainField(signInButton)
+        constrainField(signUpButton)
+    }
 
+    func addStackViewConstraints() {
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         let relatedAttributes: [(NSLayoutConstraint.Attribute, NSLayoutConstraint.Attribute)] = [
             (.centerY, .centerY), (.leading, .leadingMargin), (.trailing, .trailingMargin)
@@ -97,10 +105,35 @@ extension SignInViewController {
         view.addConstraints(constraints)
     }
 
+    func addConstraints() {
+        addFieldConstraints()
+
+        signUpDividerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints([
+            NSLayoutConstraint(item: signUpDividerView,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1,
+                               constant: ctx.styleGuide.pixels.line),
+            NSLayoutConstraint(item: signUpDividerView,
+                               attribute: .width,
+                               relatedBy: .equal,
+                               toItem: signUpButton,
+                               attribute: .width,
+                               multiplier: 1,
+                               constant: 0)
+        ])
+
+        addStackViewConstraints()
+    }
+
     func addSubviews() {
         verticalStackView.addArrangedSubview(usernameTextField)
         verticalStackView.addArrangedSubview(passwordTextField)
         verticalStackView.addArrangedSubview(signInButton)
+        verticalStackView.addArrangedSubview(signUpDividerView)
         verticalStackView.addArrangedSubview(signUpButton)
         view.addSubview(verticalStackView)
     }
@@ -110,11 +143,20 @@ extension SignInViewController {
 
 extension SignInViewController {
     @objc func signIn() {
-        print(#function)
+        var isValidSignIn = true
+        if !viewModel.isUsernameValid(usernameTextField.text) {
+            isValidSignIn = false
+        }
+        if !viewModel.isPasswordValid(passwordTextField.text) {
+            isValidSignIn = false
+        }
+        if isValidSignIn {
+            viewModel.signIn(username: "", password: "")
+        }
     }
 
     @objc func signUp() {
-        print(#function)
+        viewModel.signUp()
     }
 }
 
