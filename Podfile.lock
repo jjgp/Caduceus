@@ -13,6 +13,11 @@ PODS:
   - AWSMobileClient (2.13.3):
     - AWSAuthCore (= 2.13.3)
     - AWSCognitoIdentityProvider (= 2.13.3)
+  - RxBlocking (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxTest (5.1.1):
+    - RxSwift (~> 5)
   - SwiftLint (0.34.0)
 
 DEPENDENCIES:
@@ -20,6 +25,9 @@ DEPENDENCIES:
   - AWSKinesisVideo
   - AWSKinesisVideoSignaling
   - AWSMobileClient
+  - RxBlocking
+  - RxSwift
+  - RxTest
   - SwiftLint
 
 SPEC REPOS:
@@ -31,6 +39,9 @@ SPEC REPOS:
     - AWSKinesisVideo
     - AWSKinesisVideoSignaling
     - AWSMobileClient
+    - RxBlocking
+    - RxSwift
+    - RxTest
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -41,8 +52,11 @@ SPEC CHECKSUMS:
   AWSKinesisVideo: e52bd5da816234da368c05d7b666fdfb2898b2d6
   AWSKinesisVideoSignaling: c6e08e4ead28d6fee616da1bcfdd7aef2dd39897
   AWSMobileClient: 9149b664d1a89279bd49d36598c7afc38a63d7d1
+  RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: e6ec02be9b851440bef5746343d5cbd82df1f8b9
+PODFILE CHECKSUM: 76c6d1c5bcdfc6ba2352a2926c239f14bcb68d8b
 
 COCOAPODS: 1.9.1

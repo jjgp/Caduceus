@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.off
         #endif
 
-        registerWithAWSCognito()
-
+        ctx.store.dispatch(.didFinishLaunchingWithOptions)
         return true
     }
 

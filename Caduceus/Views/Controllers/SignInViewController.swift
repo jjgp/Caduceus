@@ -51,6 +51,8 @@ class SignInViewController: UIViewController {
         addActions()
         addSubviews()
         addConstraints()
+
+        // TODO: subscribe to store
     }
 }
 
@@ -153,6 +155,8 @@ extension SignInViewController {
         if isValidSignIn {
             viewModel.signIn(username: "", password: "")
         }
+
+        ctx.store.dispatch(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
     }
 
     @objc func signUp() {

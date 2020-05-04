@@ -12,8 +12,11 @@ target 'Caduceus' do
   pod 'AWSKinesisVideo'
   pod 'AWSKinesisVideoSignaling'
   pod 'AWSMobileClient'
+  pod 'RxSwift'
 
   target 'CaduceusTests' do
     inherit! :search_paths
+    pod 'RxBlocking'
+    pod 'RxTest'
   end
 end

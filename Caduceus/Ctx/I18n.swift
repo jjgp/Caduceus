@@ -1,5 +1,5 @@
 //
-//  I10n.swift
+//  I18n.swift
 //  Caduceus
 //
 //  Created by Jason Prasad on 5/3/20.
@@ -9,12 +9,12 @@
 import Foundation
 
 extension String {
-    static func t(_ key: KeyPath<I10n, String>, _ arguments: CVarArg...) -> String {
-        return ctx.i10n[keyPath: key]
+    static func t(_ key: KeyPath<I18n, String>, _ arguments: CVarArg...) -> String {
+        return ctx.i18n[keyPath: key]
     }
 }
 
-struct I10n {
+struct I18n {
     var password: String { NSLocalizedString("Password", comment: "Used as placeholder text in password field") }
     var signIn: String { NSLocalizedString("Sign In", comment: "Used as title text in sign in button") }
     var signUp: String { NSLocalizedString("Sign Up", comment: "Used as title text in sign up button") }
