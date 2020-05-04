@@ -24,6 +24,7 @@
 		B7E8B00D245F9A3900877194 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B00C245F9A3900877194 /* SignUpViewModel.swift */; };
 		B7E8B00F245F9A4700877194 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B00E245F9A4700877194 /* SignInViewModel.swift */; };
 		B7E8B012246052D800877194 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B011246052D800877194 /* AppCoordinator.swift */; };
+		B7E8B014246057BE00877194 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B013246057BE00877194 /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B7E8B00C245F9A3900877194 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		B7E8B00E245F9A4700877194 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B7E8B011246052D800877194 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B7E8B013246057BE00877194 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +200,7 @@
 		B7F864CE245DF6EF00C8DD16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B7E8B013246057BE00877194 /* LaunchViewController.swift */,
 				B7E8B001245F51F500877194 /* SignInViewController.swift */,
 			);
 			path = Controllers;
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7E8B014246057BE00877194 /* LaunchViewController.swift in Sources */,
 				B7E8B012246052D800877194 /* AppCoordinator.swift in Sources */,
 				B7E8B002245F51F500877194 /* SignInViewController.swift in Sources */,
 				B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */,

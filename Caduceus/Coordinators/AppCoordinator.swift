@@ -19,13 +19,17 @@ protocol AppCoordinatorType {
 
 class AppCoordinator: AppCoordinatorType {
     weak var window: UIWindow?
+}
 
+extension AppCoordinator {
     func attactToWindow(_ window: UIWindow) {
         self.window = window
-        self.window?.rootViewController = SignInViewController()
+        self.window?.rootViewController = LaunchViewController()
         self.window?.makeKeyAndVisible()
     }
+}
 
+extension AppCoordinator {
     func startWithLaunchOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) {
         AWSMobileClient.default().initialize { (userState, error) in
             if let userState = userState {
