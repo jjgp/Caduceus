@@ -17,5 +17,6 @@ extension String {
 struct I10n {
     var password: String { NSLocalizedString("Password", comment: "") }
     var signIn: String { NSLocalizedString("Sign In", comment: "") }
+    var signUp: String { NSLocalizedString("Sign Up", comment: "") }
     var username: String { NSLocalizedString("Username", comment: "") }
 }

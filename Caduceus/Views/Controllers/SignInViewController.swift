@@ -9,38 +9,40 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    static func textField(placeholder: String) -> UITextField {
+    static func button(_ title: String) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = ctx.styleGuide.colors.buttonColor
+        button.layer.cornerRadius = ctx.styleGuide.pixels.buttonRounding
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(ctx.styleGuide.colors.buttonFont, for: .normal)
+        return button
+    }
+    static func textField(_ placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = placeholder
         return textField
     }
 
-    let passwordTextField = SignInViewController.textField(placeholder: .t(\.password))
-    let signInButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = ctx.colors.buttonColor
-        button.layer.cornerRadius = 5
-        button.setTitle(.t(\.signIn), for: .normal)
-        button.setTitleColor(ctx.colors.buttonFont, for: .normal)
-        return button
-    }()
+    let passwordTextField = SignInViewController.textField(.t(\.password))
+    let signInButton = SignInViewController.button(.t(\.signIn))
+    let signUpButton = SignInViewController.button(.t(\.signUp))
     let verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 18
+        stackView.spacing = ctx.styleGuide.pixels.fieldSpacing
         return stackView
     }()
-    let usernameTextField = SignInViewController.textField(placeholder: .t(\.username))
+    let usernameTextField = SignInViewController.textField(.t(\.username))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = ctx.colors.background
-        signInButton.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
+        view.backgroundColor = ctx.styleGuide.colors.background
 
+        addActions()
         addSubviews()
         addConstraints()
     }
@@ -49,11 +51,9 @@ class SignInViewController: UIViewController {
 // MARK: - Subview setup
 
 extension SignInViewController {
-    func addSubviews() {
-        verticalStackView.addArrangedSubview(usernameTextField)
-        verticalStackView.addArrangedSubview(passwordTextField)
-        verticalStackView.addArrangedSubview(signInButton)
-        view.addSubview(verticalStackView)
+    func addActions() {
+        signInButton.addTarget(self, action: #selector(signIn), for: UIControl.Event.touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUp), for: UIControl.Event.touchUpInside)
     }
 
     func addConstraints() {
@@ -66,7 +66,7 @@ extension SignInViewController {
                                    toItem: nil,
                                    attribute: .notAnAttribute,
                                    multiplier: 1,
-                                   constant: 45),
+                                   constant: ctx.styleGuide.pixels.fieldHeight),
                 NSLayoutConstraint(item: subview,
                                    attribute: .width,
                                    relatedBy: .equal,
@@ -79,6 +79,7 @@ extension SignInViewController {
         constrainArrangedSubview(passwordTextField)
         constrainArrangedSubview(usernameTextField)
         constrainArrangedSubview(signInButton)
+        constrainArrangedSubview(signUpButton)
 
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         let relatedAttributes: [(NSLayoutConstraint.Attribute, NSLayoutConstraint.Attribute)] = [
@@ -95,13 +96,25 @@ extension SignInViewController {
         }
         view.addConstraints(constraints)
     }
+
+    func addSubviews() {
+        verticalStackView.addArrangedSubview(usernameTextField)
+        verticalStackView.addArrangedSubview(passwordTextField)
+        verticalStackView.addArrangedSubview(signInButton)
+        verticalStackView.addArrangedSubview(signUpButton)
+        view.addSubview(verticalStackView)
+    }
 }
 
-// MARK: - Submit action
+// MARK: - UIButton actions
 
 extension SignInViewController {
-    @objc func submit() {
-        print("submit")
+    @objc func signIn() {
+        print(#function)
+    }
+
+    @objc func signUp() {
+        print(#function)
     }
 }
 
