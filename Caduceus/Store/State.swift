@@ -8,10 +8,4 @@
 
 import Foundation
 
-struct State: Equatable {
-    let foobar: String
-
-    init(foobar: String = "foobar") {
-        self.foobar = foobar
-    }
-}
+struct State: Equatable {}

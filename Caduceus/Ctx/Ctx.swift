@@ -12,13 +12,17 @@
 typealias Ctx = (
     constants: Constants,
     i18n: I18n,
-    store: Store,
+    store: Store<State, Action>,
     styleGuide: StyleGuide
 )
 
 var ctx: Ctx = (
     Constants(),
     I18n(),
-    Store(),
+    Store(
+        accumulator: accumulator(state:action:),
+        state: State(),
+        action: .initialize
+    ),
     StyleGuide()
 )

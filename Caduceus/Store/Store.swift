@@ -8,32 +8,29 @@
 
 import RxSwift
 
-func accumulator(state: State, action: Action) -> State {
-    if action == Action.didFinishLaunchingWithOptions {
-        return State(foobar: "quux")
-    } else {
-        return State(foobar: "barbaz")
+class Store<S, A> {
+    private let dispatch: BehaviorSubject<A>
+    private let state: Observable<S?>
+
+    init(accumulator: @escaping Accumulator, state: S?, action seed: A) {
+        dispatch = BehaviorSubject<A>(value: seed)
+        self.state = dispatch.scan(state, accumulator: accumulator)
     }
+
+    typealias Accumulator = (S?, A) -> S
+    typealias Middleware = (BehaviorSubject<A>, Observable<S>) -> BehaviorSubject<A>
 }
 
-class Store: ObservableType {
-    private let dispatch = BehaviorSubject<Action>(value: .initialize)
-    private let disposeBag: DisposeBag = DisposeBag()
-    private let store: Observable<State>
-
-    init(accumulator: @escaping (State, Action) -> State = accumulator) {
-        store = dispatch.scan(State(), accumulator: accumulator)
-    }
-
-    func dispatch(_ action: Action, value: Codable? = nil) {
+extension Store: ObservableType {
+    func dispatch(_ action: A) {
         dispatch.on(.next(action))
     }
 
     func subscribe<Observer>(
         _ observer: Observer
     ) -> Disposable where Observer: ObserverType, Element == Observer.Element {
-        store.subscribe(observer)
+        state.subscribe(observer)
     }
 
-    typealias Element = State
+    typealias Element = S?
 }
