@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 class SignInViewController: UIViewController {
@@ -24,6 +25,7 @@ class SignInViewController: UIViewController {
         return textField
     }
 
+    let disposeBag = DisposeBag()
     let passwordTextField = SignInViewController.textField(.t(\.password))
     let signInButton = SignInViewController.button(.t(\.signIn))
     let signUpButton = SignInViewController.button(.t(\.signUp))
@@ -40,7 +42,6 @@ class SignInViewController: UIViewController {
         stackView.spacing = ctx.styleGuide.pixels.fieldSpacing
         return stackView
     }()
-    var viewModel: SignInViewModelType = SignInViewModel()
     let usernameTextField = SignInViewController.textField(.t(\.username))
 
     override func viewDidLoad() {
@@ -52,7 +53,9 @@ class SignInViewController: UIViewController {
         addSubviews()
         addConstraints()
 
-        // TODO: subscribe to store
+        ctx.store.state.observeOn(MainScheduler.instance).subscribe(onNext: { state in
+            print(String(describing: state))
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -145,22 +148,22 @@ extension SignInViewController {
 
 extension SignInViewController {
     @objc func signIn() {
-        var isValidSignIn = true
-        if !viewModel.isUsernameValid(usernameTextField.text) {
-            isValidSignIn = false
-        }
-        if !viewModel.isPasswordValid(passwordTextField.text) {
-            isValidSignIn = false
-        }
-        if isValidSignIn {
-            viewModel.signIn(username: "", password: "")
-        }
+//        var isValidSignIn = true
+//        if !viewModel.isUsernameValid(usernameTextField.text) {
+//            isValidSignIn = false
+//        }
+//        if !viewModel.isPasswordValid(passwordTextField.text) {
+//            isValidSignIn = false
+//        }
+//        if isValidSignIn {
+//            viewModel.signIn(username: "", password: "")
+//        }
 
-        ctx.store.dispatch(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
+        ctx.store.dispatch.accept(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
     }
 
     @objc func signUp() {
-        viewModel.signUp()
+//        ctx.store.dispatch()
     }
 }
 

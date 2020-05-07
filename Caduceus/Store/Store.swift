@@ -6,31 +6,38 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 
 class Store<S, A> {
-    private let dispatch: BehaviorSubject<A>
-    private let state: Observable<S?>
+    public let dispatch = PublishRelay<A>()
+    private let disposeBag = DisposeBag()
+    public let state: BehaviorRelay<S?>
 
-    init(accumulator: @escaping Accumulator, state: S?, action seed: A) {
-        dispatch = BehaviorSubject<A>(value: seed)
-        self.state = dispatch.scan(state, accumulator: accumulator)
+    init(
+        accumulator: @escaping Accumulator,
+        initialState: S? = nil,
+        effects: [Effect] = []
+    ) {
+        state = BehaviorRelay(value: initialState)
+        dispatch
+            .scan(initialState, accumulator: accumulator)
+            .bind(to: state)
+            .disposed(by: disposeBag)
+
+//        _ = effects.first?(Observable.zip(self.state, dispatch), dispatch)
+//
+//        effects
+//            .reversed()
+//            .reduce(dispatch) { dispatchFunction, effect in
+//                    // If the store get's deinitialized before the middleware is complete; drop
+//                    // the action without dispatching.
+//                    let dispatch: (Action) -> Void = { [weak self] in self?.dispatch($0) }
+//                    let getState = { [weak self] in self?.state }
+//                    return middleware(dispatch, getState)(dispatchFunction)
+//            }
     }
 
     typealias Accumulator = (S?, A) -> S
-    typealias Middleware = (BehaviorSubject<A>, Observable<S>) -> BehaviorSubject<A>
-}
-
-extension Store: ObservableType {
-    func dispatch(_ action: A) {
-        dispatch.on(.next(action))
-    }
-
-    func subscribe<Observer>(
-        _ observer: Observer
-    ) -> Disposable where Observer: ObserverType, Element == Observer.Element {
-        state.subscribe(observer)
-    }
-
-    typealias Element = S?
+    typealias Effect = (PublishRelay<A>, BehaviorRelay<S?>) -> (PublishRelay<A>) -> PublishRelay<A>
 }

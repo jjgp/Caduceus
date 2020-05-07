@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,8 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = LaunchViewController()
-        self.window?.makeKeyAndVisible()
+//        let router = Router(attachedTo: self.window!)
+        // TODO: Disable in testing
+        _ = ctx.store.state.observeOn(MainScheduler.instance).subscribe(onNext: { state in
+            print(String(describing: state))
+        })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

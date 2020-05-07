@@ -21,8 +21,7 @@ var ctx: Ctx = (
     I18n(),
     Store(
         accumulator: accumulator(state:action:),
-        state: State(),
-        action: .initialize
+        initialState: State()
     ),
     StyleGuide()
 )

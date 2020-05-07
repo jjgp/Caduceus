@@ -20,15 +20,13 @@
 		B7E8B005245F892800877194 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B004245F892800877194 /* Constants.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B009245F89F100877194 /* StyleGuide.swift */; };
-		B7E8B00D245F9A3900877194 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B00C245F9A3900877194 /* SignUpViewModel.swift */; };
-		B7E8B00F245F9A4700877194 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B00E245F9A4700877194 /* SignInViewModel.swift */; };
 		B7E8B014246057BE00877194 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B013246057BE00877194 /* LaunchViewController.swift */; };
 		B7E8B016246074AB00877194 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B015246074AB00877194 /* Store.swift */; };
-		B7E8B019246092DA00877194 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* Actions.swift */; };
+		B7E8B019246092DA00877194 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* Action.swift */; };
 		B7E8B01B246092E300877194 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01A246092E300877194 /* State.swift */; };
 		B7E8B01E2460C41100877194 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01D2460C41100877194 /* StoreTests.swift */; };
 		B7E8B0202460F7B600877194 /* Accumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01F2460F7B600877194 /* Accumulator.swift */; };
-		B7E8B0222460FFD400877194 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B0212460FFD400877194 /* Box.swift */; };
+		B7E8B02424611D2C00877194 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B02324611D2C00877194 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,15 +59,13 @@
 		B7E8B004245F892800877194 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B7E8B006245F894E00877194 /* I18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		B7E8B009245F89F100877194 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
-		B7E8B00C245F9A3900877194 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		B7E8B00E245F9A4700877194 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B7E8B013246057BE00877194 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		B7E8B015246074AB00877194 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		B7E8B018246092DA00877194 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		B7E8B018246092DA00877194 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		B7E8B01A246092E300877194 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		B7E8B01D2460C41100877194 /* StoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		B7E8B01F2460F7B600877194 /* Accumulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accumulator.swift; sourceTree = "<group>"; };
-		B7E8B0212460FFD400877194 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		B7E8B02324611D2C00877194 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,13 +135,13 @@
 				B7B0826A245DA33700423BD9 /* Info.plist */,
 				B7B08275245DA33700423BD9 /* InfoTests.plist */,
 				B7B0825C245DA33400423BD9 /* AppDelegate.swift */,
+				B7E8B02324611D2C00877194 /* Router.swift */,
 				B7B0825E245DA33400423BD9 /* SceneDelegate.swift */,
 				B7B08265245DA33700423BD9 /* Assets.xcassets */,
 				B7E8B003245F891500877194 /* Ctx */,
 				B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */,
 				B7E8AFFE245F1B1300877194 /* Library */,
 				B7E8B017246092C700877194 /* Store */,
-				B7E8B00B245F9A2100877194 /* ViewModels */,
 				B7F864CD245DF6E300C8DD16 /* Views */,
 			);
 			path = Caduceus;
@@ -154,7 +150,6 @@
 		B7E8AFFE245F1B1300877194 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				B7E8B0212460FFD400877194 /* Box.swift */,
 				B7E8AFFF245F1B6B00877194 /* DKVL.swift */,
 				B77A0B3C245DD982005AE743 /* PreviewWrapper.swift */,
 			);
@@ -172,20 +167,11 @@
 			path = Ctx;
 			sourceTree = "<group>";
 		};
-		B7E8B00B245F9A2100877194 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				B7E8B00E245F9A4700877194 /* SignInViewModel.swift */,
-				B7E8B00C245F9A3900877194 /* SignUpViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		B7E8B017246092C700877194 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				B7E8B01F2460F7B600877194 /* Accumulator.swift */,
-				B7E8B018246092DA00877194 /* Actions.swift */,
+				B7E8B018246092DA00877194 /* Action.swift */,
 				B7E8B01A246092E300877194 /* State.swift */,
 				B7E8B015246074AB00877194 /* Store.swift */,
 				B7E8B01D2460C41100877194 /* StoreTests.swift */,
@@ -415,11 +401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7E8B019246092DA00877194 /* Actions.swift in Sources */,
+				B7E8B019246092DA00877194 /* Action.swift in Sources */,
 				B7E8B014246057BE00877194 /* LaunchViewController.swift in Sources */,
 				B7E8B002245F51F500877194 /* SignInViewController.swift in Sources */,
 				B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */,
-				B7E8B00D245F9A3900877194 /* SignUpViewModel.swift in Sources */,
+				B7E8B02424611D2C00877194 /* Router.swift in Sources */,
 				B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */,
 				B7E8B01B246092E300877194 /* State.swift in Sources */,
 				B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */,
@@ -428,8 +414,6 @@
 				B7E8B005245F892800877194 /* Constants.swift in Sources */,
 				B7E8B007245F894E00877194 /* I18n.swift in Sources */,
 				B7E8B0202460F7B600877194 /* Accumulator.swift in Sources */,
-				B7E8B0222460FFD400877194 /* Box.swift in Sources */,
-				B7E8B00F245F9A4700877194 /* SignInViewModel.swift in Sources */,
 				B7B0825F245DA33400423BD9 /* SceneDelegate.swift in Sources */,
 				B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */,
 			);

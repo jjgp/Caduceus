@@ -15,6 +15,11 @@ PODS:
     - AWSCognitoIdentityProvider (= 2.13.3)
   - RxBlocking (5.1.1):
     - RxSwift (~> 5)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - RxTest (5.1.1):
     - RxSwift (~> 5)
@@ -26,6 +31,7 @@ DEPENDENCIES:
   - AWSKinesisVideoSignaling
   - AWSMobileClient
   - RxBlocking
+  - RxCocoa
   - RxSwift
   - RxTest
   - SwiftLint
@@ -40,6 +46,8 @@ SPEC REPOS:
     - AWSKinesisVideoSignaling
     - AWSMobileClient
     - RxBlocking
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - RxTest
     - SwiftLint
@@ -53,10 +61,12 @@ SPEC CHECKSUMS:
   AWSKinesisVideoSignaling: c6e08e4ead28d6fee616da1bcfdd7aef2dd39897
   AWSMobileClient: 9149b664d1a89279bd49d36598c7afc38a63d7d1
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: 76c6d1c5bcdfc6ba2352a2926c239f14bcb68d8b
+PODFILE CHECKSUM: 295cd797986bec11e066a679bb946f6bcd74369a
 
 COCOAPODS: 1.9.1
