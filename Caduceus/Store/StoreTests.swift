@@ -7,6 +7,7 @@
 //
 
 @testable import Caduceus
+import RxCocoa
 import RxSwift
 import XCTest
 
@@ -34,35 +35,14 @@ class StoreTests: XCTestCase {
     }
 
 //    func testSideEffect() {
-//        var incomingSpy: ObserverSpy<Observable<Action>>!
-//        var tupleSpy: ObserverSpy<Observable<(State?, Action)>>!
-//        let effect: Store.Effect = { dispatch, state in
-//            return {
-//
-//            }
-//            incomingSpy = ObserverSpy(incoming)
-//            tupleSpy = ObserverSpy(tuple)
-//            return PublishSubject<Action>()
+//        let effect: Store.Effect = { dispatch, state, next in
+//            return PublishRelay<Action>()
 //        }
 //        let sut = Store(
 //            accumulator: accumulator(state:action:),
-//            action: Action.initialize,
 //            effects: [effect]
 //        )
-//        sut.dispatch(.sideEffect)
-//
-//        XCTAssertEqual(incomingSpy.values, [
-//            Action.initialize,
-//            Action.sideEffect
-//        ])
-//
-//        var (state, action) = tupleSpy.values[0]
-//        XCTAssertEqual(state, State(0))
-//        XCTAssertEqual(action, Action.initialize)
-//
-//        (state, action) = tupleSpy.values[1]
-//        XCTAssertEqual(state, State(0))
-//        XCTAssertEqual(action, Action.sideEffect)
+//        sut.dispatch.accept(.sideEffect)
 //    }
 }
 

@@ -25,19 +25,13 @@ class Store<S, A> {
             .bind(to: state)
             .disposed(by: disposeBag)
 
-//        _ = effects.first?(Observable.zip(self.state, dispatch), dispatch)
-//
-//        effects
+//        _ = effects
 //            .reversed()
-//            .reduce(dispatch) { dispatchFunction, effect in
-//                    // If the store get's deinitialized before the middleware is complete; drop
-//                    // the action without dispatching.
-//                    let dispatch: (Action) -> Void = { [weak self] in self?.dispatch($0) }
-//                    let getState = { [weak self] in self?.state }
-//                    return middleware(dispatch, getState)(dispatchFunction)
-//            }
+//            .reduce(dispatch) { accumulated, effect in
+//
+//        }
     }
 
     typealias Accumulator = (S?, A) -> S
-    typealias Effect = (PublishRelay<A>, BehaviorRelay<S?>) -> (PublishRelay<A>) -> PublishRelay<A>
+    typealias Effect = (Observable<A>, Observable<S?>) -> Observable<A>
 }
