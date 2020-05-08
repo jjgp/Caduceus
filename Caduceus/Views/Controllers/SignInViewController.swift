@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import RxSwift
 import UIKit
 
 class SignInViewController: UIViewController {
@@ -95,7 +94,7 @@ private extension SignInViewController {
 
 extension SignInViewController {
     @objc func signIn() {
-        ctx.store.dispatch.accept(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
+//        ctx.store.dispatch.accept(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
     }
 
     @objc func signUp() {}

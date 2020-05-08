@@ -6,19 +6,19 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import RxSwift
+import Combine
 import UIKit
 
 class Router {
-    private let disposeBag = DisposeBag()
+    private var cancellable: AnyCancellable!
     private weak var window: UIWindow?
 
-    init(store: Store) {
-        store.state.subscribe(onNext: onNext).disposed(by: disposeBag)
+    init(store: Store<State, Action>) {
+        cancellable = store.state.sink(receiveValue: onNext(state:))
     }
 
-    func onNext(state: State?) {
-        switch state?.aws.userState {
+    func onNext(state: State) {
+        switch state.aws.userState {
         case .signedOut:
             let signInViewController = SignInViewController()
             signInViewController.modalPresentationStyle = .fullScreen

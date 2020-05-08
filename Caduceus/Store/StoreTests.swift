@@ -7,101 +7,83 @@
 //
 
 @testable import Caduceus
-import RxCocoa
-import RxSwift
+import Combine
 import XCTest
 
 class StoreTests: XCTestCase {
-    func testNilInitialState() {
-        let sut = makeSut()
-        let spy = ObserverSpy(sut.state)
-        XCTAssertEqual(spy.values, [nil])
-    }
-
     func testInitialState() {
-        let sut = makeSut(initialState: State(0))
-        let spy = ObserverSpy(sut.state)
-        XCTAssertEqual(spy.values, [State(0)])
+        let sut = makeSut()
+        let spy = PublisherSpy(sut.state)
+        XCTAssertEqual(spy.values, [0])
     }
 
     func testActionsUpdateState() {
-        let sut = makeSut(initialState: State(0))
-        let spy = ObserverSpy(sut.state)
-        sut.dispatch.accept(.decrement(1))
-        let anotherSpy = ObserverSpy(sut.state)
-        sut.dispatch.accept(.increment(1))
-        XCTAssertEqual(spy.values, [State(0), State(-1), State(0)])
-        XCTAssertEqual(anotherSpy.values, [State(-1), State(0)])
+        let sut = makeSut()
+        let spy = PublisherSpy(sut.state)
+        sut.dispatch.send(.decrement)
+        let anotherSpy = PublisherSpy(sut.state)
+        sut.dispatch.send(.increment)
+        XCTAssertEqual(spy.values, [0, -1, 0])
+        XCTAssertEqual(anotherSpy.values, [-1, 0])
     }
 
-    func testNeverEffect() {
-        var zippedSpy: ObserverSpy<Observable<(State?, Action)>>!
-        let effect: Store.Effect = { dispatch, state in
-            zippedSpy = ObserverSpy(Observable.combineLatest(state, dispatch))
-            return .never()
+    func testEffect() {
+        let effect = Effect<Int, Action> { dispatch, _ in
+            dispatch
+                .filter { $0 == .increment }
+                .map { _ in Action.decrement }
+                .eraseToAnyPublisher()
         }
-        let sut = Store(
-            accumulator: accumulator(state:action:),
-            effects: [effect]
-        )
-        let stateSpy = ObserverSpy(sut.state)
-        sut.dispatch.accept(.sideEffect)
-        XCTAssertEqual(stateSpy.values, [nil, State(0)])
-        XCTAssertEqual(zippedSpy.values.count, 1)
-        XCTAssertEqual(zippedSpy.values[0].0, State(0))
-        XCTAssertEqual(zippedSpy.values[0].1, Action.sideEffect)
-    }
-
-    func testObservableEffect() {
+        let store = makeSut(effects: [effect])
+        let spy = PublisherSpy(store.state)
+        store.dispatch.send(.increment)
+        XCTAssertEqual(spy.values, [0, 1, 0])
     }
 }
 
 // MARK: - Test Helpers
 
-private class ObserverSpy<T: ObservableType> {
-    private(set) var values: [T.Element] = []
-    private let disposeBag = DisposeBag()
-
-    init(_ observable: T) {
-        observable.subscribe(onNext: { [weak self] state in
-            self?.values.append(state)
-        }).disposed(by: disposeBag)
-    }
+private enum Action: String {
+    case increment
+    case decrement
 }
 
-private func accumulator(state: State!, action: Action) -> State {
-    var state = state ?? State(0)
+private func accumulator(state: Int, action: Action) -> Int {
     switch action {
-    case let .increment(amount):
-        state.amount += amount
-    case let .decrement(amount):
-        state.amount -= amount
-    default:
-        break
-    }
-    return state
-}
-
-private struct State: Equatable {
-    var amount: Int
-
-    init(_ amount: Int) {
-        self.amount = amount
+    case .increment:
+        return state + 1
+    case .decrement:
+        return state - 1
     }
 }
 
-private enum Action: Equatable {
-    case initialize
-    case decrement(Int)
-    case increment(Int)
-    case sideEffect
-}
-
-private func makeSut(initialState: State? = nil) -> Store {
+private func makeSut(initialState: Int = 0, effects: [Effect<Int, Action>] = []) -> Store<Int, Action> {
     return Store(
         accumulator: accumulator(state:action:),
-        initialState: initialState
+        initialState: initialState,
+        effects: effects
     )
 }
 
-private typealias Store = Caduceus.Store<State, Action>
+private class PublisherSpy<P: Publisher> {
+    private var cancellable: AnyCancellable!
+    private(set) var failure: P.Failure?
+    private(set) var isFinished = false
+    private(set) var values: [P.Output] = []
+
+    init(_ publisher: P) {
+        cancellable = publisher.sink(
+            receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.isFinished = false
+                case let .failure(error):
+                    self?.failure = error
+                }
+            },
+            receiveValue: { [weak self] value in
+                self?.values.append(value)
+            }
+        )
+    }
+}

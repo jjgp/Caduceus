@@ -7,39 +7,41 @@
 //
 
 import AWSMobileClient
-import RxSwift
+import Combine
 
-struct SignInEffect: Effect {
-    func effect(dispatch: Observable<Action>, state: Observable<State?>) -> Observable<Action>? {
-        _ = dispatch
-            .ofType(.signIn)
-            .subscribe(onNext: {
-                if case let .signIn(username, password) = $0 {
-                    AWSMobileClient.default().signIn(username: username, password: password) { signInResult, error in
-                        print(signInResult, error)
-                    }
+extension AnyPublisher where Output == State, Failure == Never {
+}
+
+func signInEffect() -> Effect<State, Action> {
+    Effect { dispatch, _ in
+        dispatch
+            .filter { action in
+                if case .signIn(_, _) = action {
+                    return true
+                } else {
+                    return false
                 }
-            })
-        return nil
+        }.sink(receiveValue: {
+            if case let .signIn(username, password) = $0 {
+                AWSMobileClient.default().signIn(username: username, password: password) { signInResult, error in
+                    print(signInResult, error)
+                }
+            }
+        })
     }
 }
 
-struct LoggingEffect: Effect {
-    private let disposeBag = DisposeBag()
-
-    func effect(dispatch: Observable<Action>, state: Observable<State?>) -> Observable<Action>? {
-        Observable
-            .zip(dispatch, state)
-            .subscribe(onNext: {
+func loggingEffect() -> Effect<State, Action> {
+    Effect {
+        Publishers.CombineLatest($0, $1)
+            .sink(receiveValue: {
                 print("Action -> \($0)\n\t|-> State -> \(String(describing: $1))")
             })
-            .disposed(by: disposeBag)
-        return nil
     }
 }
 
-struct RecorderEffect: Effect {
-    func effect(dispatch: Observable<Action>, state: Observable<State?>) -> Observable<Action>? {
-        return nil
-    }
-}
+//struct RecorderEffect: Effect {
+//    func effect(dispatch: Observable<Action>, state: Observable<State?>) -> Observable<Action>? {
+//        return nil
+//    }
+//}

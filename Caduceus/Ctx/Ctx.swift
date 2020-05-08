@@ -13,7 +13,7 @@ typealias Ctx = (
     constants: Constants,
     i18n: I18n,
     router: Router,
-    store: Store,
+    store: Store<State, Action>,
     styleGuide: StyleGuide
 )
 
@@ -22,9 +22,7 @@ private func createContext() -> Ctx {
         accumulator: accumulator(state:action:),
         initialState: State(),
         effects: [
-            LoggingEffect(),
-            RecorderEffect(),
-            SignInEffect()
+            loggingEffect()
         ]
     )
     let router = Router(store: store)

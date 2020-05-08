@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import RxSwift
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
