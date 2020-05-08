@@ -6,17 +6,22 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-func awsAccumulator(state: State.AWS?, action: Action) -> State.AWS {
-    var aws = state ?? State.AWS()
-    if case let .awsMobileClientInitialize(userState, error) = action {
-        aws.userState = userState
-        aws.error = error
-    }
-    return aws
+// MARK: - Accumulator
+
+func accumulator(state: State, action: Action) -> State {
+    State(
+        user: user(user: state.user, action: action)
+    )
 }
 
-func accumulator(state: State?, action: Action) -> State {
-    State(
-        aws: awsAccumulator(state: state?.aws, action: action)
-    )
+// MARK: - UserState
+
+private func user(user: User, action: Action) -> User {
+    if action.type == .awsMobileClientInitialize, let action = action as? AWSMobileClientInitialize {
+        var user = user
+        user.isSignedIn = action.isSignedIn
+        user.error = action.error
+        return user
+    }
+    return user
 }

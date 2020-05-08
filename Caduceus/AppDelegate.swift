@@ -60,10 +60,8 @@ extension AppDelegate {
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
                                             userPoolConfiguration: poolConfiguration,
                                             forKey: ctx.constants.awsCognitoUserPoolsSignInProviderKey)
-        AWSMobileClient.default().initialize { userState, error in
-            ctx.store.dispatch.send(
-                .awsMobileClientInitialize(userState: userState, error: error?.localizedDescription)
-            )
+        AWSMobileClient.default().initialize {
+            ctx.store.dispatch.send(AWSMobileClientInitialize(userState: $0, error: $1))
         }
     }
 }

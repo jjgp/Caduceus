@@ -32,7 +32,6 @@ class StoreTests: XCTestCase {
             dispatch
                 .filter { $0 == .increment }
                 .map { _ in Action.decrement }
-                .eraseToAnyPublisher()
         }
         let store = makeSut(effects: [effect])
         let spy = PublisherSpy(store.state)

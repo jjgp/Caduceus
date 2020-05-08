@@ -18,14 +18,15 @@ typealias Ctx = (
 )
 
 private func createContext() -> Ctx {
+    let router = Router()
     let store = Store(
         accumulator: accumulator(state:action:),
         initialState: State(),
         effects: [
-            loggingEffect()
+            loggingEffect(),
+            router.effect()
         ]
     )
-    let router = Router(store: store)
     return (
         Constants(),
         I18n(),

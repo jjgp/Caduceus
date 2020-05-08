@@ -9,15 +9,19 @@
 import AWSMobileClient
 import Foundation
 
+// MARK: - State
+
 struct State: Equatable {
-    struct AWS: Equatable {
-        var userState: UserState?
-        var error: String?
-    }
+    let user: User
 
-    let aws: AWS
-
-    init(aws: AWS = AWS()) {
-        self.aws = aws
+    init(user: User = User()) {
+        self.user = user
     }
+}
+
+// MARK: - UserState
+
+struct User: Equatable {
+    var isSignedIn: Bool?
+    var error: String?
 }

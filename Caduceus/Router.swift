@@ -12,21 +12,6 @@ import UIKit
 class Router {
     private var cancellable: AnyCancellable!
     private weak var window: UIWindow?
-
-    init(store: Store<State, Action>) {
-        cancellable = store.state.sink(receiveValue: onNext(state:))
-    }
-
-    func onNext(state: State) {
-        switch state.aws.userState {
-        case .signedOut:
-            let signInViewController = SignInViewController()
-            signInViewController.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController?.present(signInViewController, animated: true, completion: nil)
-        default:
-            break
-        }
-    }
 }
 
 extension Router {
@@ -34,5 +19,18 @@ extension Router {
         self.window = window
         self.window?.rootViewController = LaunchViewController()
         self.window?.makeKeyAndVisible()
+    }
+}
+
+extension Router {
+    func effect() -> Effect<State, Action> {
+        Effect { _, _ in
+            Empty<Action, Never>()
+        }
+//        if state.user.isSignedIn == false {
+//            let signInViewController = SignInViewController()
+//            signInViewController.modalPresentationStyle = .fullScreen
+//            self.window?.rootViewController?.present(signInViewController, animated: true, completion: nil)
+//        }
     }
 }
