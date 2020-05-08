@@ -71,7 +71,6 @@ extension DKVL {
 }
 
 extension DKVL {
-
   var isNull: Bool {
     if case .null = self {
       return true

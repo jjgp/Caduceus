@@ -25,7 +25,6 @@ class SignInViewController: UIViewController {
         return textField
     }
 
-    let disposeBag = DisposeBag()
     let passwordTextField = SignInViewController.textField(.t(\.password))
     let signInButton = SignInViewController.button(.t(\.signIn))
     let signUpButton = SignInViewController.button(.t(\.signUp))
@@ -38,7 +37,7 @@ class SignInViewController: UIViewController {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
         stackView.spacing = ctx.styleGuide.pixels.fieldSpacing
         return stackView
     }()
@@ -48,99 +47,47 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = ctx.styleGuide.colors.background
-
-        addActions()
-        addSubviews()
-        addConstraints()
-
-        ctx.store.state.observeOn(MainScheduler.instance).subscribe(onNext: { state in
-            print(String(describing: state))
-        }).disposed(by: disposeBag)
+        setupSubviews()
     }
 }
 
-// MARK: - Subview setup
+private extension SignInViewController {
+    // MARK: - Subview setup
 
-extension SignInViewController {
-    func addActions() {
-        signInButton.addTarget(self, action: #selector(signIn), for: UIControl.Event.touchUpInside)
-        signUpButton.addTarget(self, action: #selector(signUp), for: UIControl.Event.touchUpInside)
-    }
-
-    func addFieldConstraints() {
-        func constrainField(_ subview: UIView) {
-            subview.translatesAutoresizingMaskIntoConstraints = false
-            view.addConstraints([
-                NSLayoutConstraint(item: subview,
-                                   attribute: .height,
-                                   relatedBy: .equal,
-                                   toItem: nil,
-                                   attribute: .notAnAttribute,
-                                   multiplier: 1,
-                                   constant: ctx.styleGuide.pixels.fieldHeight),
-                NSLayoutConstraint(item: subview,
-                                   attribute: .width,
-                                   relatedBy: .equal,
-                                   toItem: verticalStackView,
-                                   attribute: .width,
-                                   multiplier: 1,
-                                   constant: 0)
-            ])
-        }
-        constrainField(passwordTextField)
-        constrainField(usernameTextField)
-        constrainField(signInButton)
-        constrainField(signUpButton)
-    }
-
-    func addStackViewConstraints() {
+    func setupSubviews() {
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        let relatedAttributes: [(NSLayoutConstraint.Attribute, NSLayoutConstraint.Attribute)] = [
-            (.centerY, .centerY), (.leading, .leadingMargin), (.trailing, .trailingMargin)
-        ]
-        let constraints = relatedAttributes.map {
-            NSLayoutConstraint(item: verticalStackView,
-                               attribute: $0.0,
-                               relatedBy: .equal,
-                               toItem: view,
-                               attribute: $0.1,
-                               multiplier: 1,
-                               constant: 0)
-        }
-        view.addConstraints(constraints)
-    }
-
-    func addConstraints() {
-        addFieldConstraints()
-
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
         signUpDividerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints([
-            NSLayoutConstraint(item: signUpDividerView,
-                               attribute: .height,
-                               relatedBy: .equal,
-                               toItem: nil,
-                               attribute: .notAnAttribute,
-                               multiplier: 1,
-                               constant: ctx.styleGuide.pixels.line),
-            NSLayoutConstraint(item: signUpDividerView,
-                               attribute: .width,
-                               relatedBy: .equal,
-                               toItem: signUpButton,
-                               attribute: .width,
-                               multiplier: 1,
-                               constant: 0)
-        ])
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
 
-        addStackViewConstraints()
-    }
-
-    func addSubviews() {
         verticalStackView.addArrangedSubview(usernameTextField)
         verticalStackView.addArrangedSubview(passwordTextField)
         verticalStackView.addArrangedSubview(signInButton)
         verticalStackView.addArrangedSubview(signUpDividerView)
         verticalStackView.addArrangedSubview(signUpButton)
         view.addSubview(verticalStackView)
+
+        let fieldHeight: CGFloat = ctx.styleGuide.pixels.fieldHeight
+        NSLayoutConstraint.activate([
+            verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            passwordTextField.heightAnchor.constraint(equalToConstant: fieldHeight),
+            passwordTextField.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            usernameTextField.heightAnchor.constraint(equalToConstant: fieldHeight),
+            usernameTextField.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            signInButton.heightAnchor.constraint(equalToConstant: fieldHeight),
+            signInButton.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            signUpDividerView.heightAnchor.constraint(equalToConstant: ctx.styleGuide.pixels.line),
+            signUpDividerView.widthAnchor.constraint(equalTo: signUpButton.widthAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: fieldHeight),
+            signUpButton.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
+        ])
+
+        signInButton.addTarget(self, action: #selector(signIn), for: UIControl.Event.touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUp), for: UIControl.Event.touchUpInside)
     }
 }
 
@@ -148,23 +95,10 @@ extension SignInViewController {
 
 extension SignInViewController {
     @objc func signIn() {
-//        var isValidSignIn = true
-//        if !viewModel.isUsernameValid(usernameTextField.text) {
-//            isValidSignIn = false
-//        }
-//        if !viewModel.isPasswordValid(passwordTextField.text) {
-//            isValidSignIn = false
-//        }
-//        if isValidSignIn {
-//            viewModel.signIn(username: "", password: "")
-//        }
-
         ctx.store.dispatch.accept(.signIn(username: usernameTextField.text!, password: passwordTextField.text!))
     }
 
-    @objc func signUp() {
-//        ctx.store.dispatch()
-    }
+    @objc func signUp() {}
 }
 
 #if DEBUG

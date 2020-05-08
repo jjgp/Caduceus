@@ -17,11 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-//        let router = Router(attachedTo: self.window!)
-        // TODO: Disable in testing
-        _ = ctx.store.state.observeOn(MainScheduler.instance).subscribe(onNext: { state in
-            print(String(describing: state))
-        })
+        ctx.router.attach(to: self.window!)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

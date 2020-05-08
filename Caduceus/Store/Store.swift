@@ -9,29 +9,37 @@
 import RxCocoa
 import RxSwift
 
-class Store<S, A> {
-    public let dispatch = PublishRelay<A>()
+protocol Effect {
+    func effect(dispatch: Observable<Action>, state: Observable<State?>) -> Observable<Action>?
+}
+
+class Store {
+    public let dispatch = PublishRelay<Action>()
     private let disposeBag = DisposeBag()
-    public let state: BehaviorRelay<S?>
+    private let effects: [Effect]
+    public let state: Observable<State?>
 
     init(
         accumulator: @escaping Accumulator,
-        initialState: S? = nil,
+        initialState: State? = nil,
         effects: [Effect] = []
     ) {
-        state = BehaviorRelay(value: initialState)
+        let state = BehaviorRelay(value: initialState)
+        self.state = state.asObservable()
         dispatch
+            .observeOn(MainScheduler.instance)
             .scan(initialState, accumulator: accumulator)
             .bind(to: state)
             .disposed(by: disposeBag)
-
-//        _ = effects
-//            .reversed()
-//            .reduce(dispatch) { accumulated, effect in
-//
-//        }
+        self.effects = effects
+        Observable
+            .merge(effects.compactMap({
+                $0.effect(dispatch: dispatch.asObservable(), state: self.state.distinctUntilChanged())
+            }))
+            .observeOn(MainScheduler.asyncInstance)
+            .bind(to: dispatch)
+            .disposed(by: disposeBag)
     }
 
-    typealias Accumulator = (S?, A) -> S
-    typealias Effect = (Observable<A>, Observable<S?>) -> Observable<A>
+    typealias Accumulator = (State?, Action) -> State
 }

@@ -6,6 +6,18 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import AWSMobileClient
 import Foundation
 
-struct State: Equatable {}
+struct State: Equatable {
+    struct AWS: Equatable {
+        var userState: UserState?
+        var error: String?
+    }
+
+    let aws: AWS
+
+    init(aws: AWS = AWS()) {
+        self.aws = aws
+    }
+}

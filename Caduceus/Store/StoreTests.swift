@@ -34,67 +34,74 @@ class StoreTests: XCTestCase {
         XCTAssertEqual(anotherSpy.values, [State(-1), State(0)])
     }
 
-//    func testSideEffect() {
-//        let effect: Store.Effect = { dispatch, state, next in
-//            return PublishRelay<Action>()
-//        }
-//        let sut = Store(
-//            accumulator: accumulator(state:action:),
-//            effects: [effect]
-//        )
-//        sut.dispatch.accept(.sideEffect)
-//    }
+    func testNeverEffect() {
+        var zippedSpy: ObserverSpy<Observable<(State?, Action)>>!
+        let effect: Store.Effect = { dispatch, state in
+            zippedSpy = ObserverSpy(Observable.combineLatest(state, dispatch))
+            return .never()
+        }
+        let sut = Store(
+            accumulator: accumulator(state:action:),
+            effects: [effect]
+        )
+        let stateSpy = ObserverSpy(sut.state)
+        sut.dispatch.accept(.sideEffect)
+        XCTAssertEqual(stateSpy.values, [nil, State(0)])
+        XCTAssertEqual(zippedSpy.values.count, 1)
+        XCTAssertEqual(zippedSpy.values[0].0, State(0))
+        XCTAssertEqual(zippedSpy.values[0].1, Action.sideEffect)
+    }
+
+    func testObservableEffect() {
+    }
 }
 
 // MARK: - Test Helpers
 
-extension StoreTests {
-    private class ObserverSpy<T: ObservableType> {
-        private(set) var values: [T.Element] = []
-        private let disposeBag = DisposeBag()
+private class ObserverSpy<T: ObservableType> {
+    private(set) var values: [T.Element] = []
+    private let disposeBag = DisposeBag()
 
-        init(_ observable: T) {
-            observable.subscribe(onNext: { [weak self] state in
-                self?.values.append(state)
-            }).disposed(by: disposeBag)
-        }
+    init(_ observable: T) {
+        observable.subscribe(onNext: { [weak self] state in
+            self?.values.append(state)
+        }).disposed(by: disposeBag)
     }
-
-    private func accumulator(state: State!, action: Action) -> State {
-        switch action {
-        case let .increment(amount):
-            return State(state.amount + amount)
-        case let .decrement(amount):
-            return State(state.amount - amount)
-        default:
-            return State(0)
-        }
-    }
-
-    private struct State: Equatable {
-        let amount: Int
-        init(_ amount: Int) {
-            self.amount = amount
-        }
-    }
-
-    private enum Action: Equatable {
-        case initialize
-        case decrement(Int)
-        case increment(Int)
-        case sideEffect
-    }
-
-    private func makeSut(initialState: State? = nil) -> Store {
-        return Store(
-            accumulator: accumulator(state:action:),
-            initialState: initialState
-        )
-    }
-
-    private typealias Store = Caduceus.Store<State, Action>
 }
 
-private func ==<T: Equatable>(lhs: (T, T), rhs: (T, T)) -> Bool {
-    return (lhs.0 == rhs.0) && (lhs.1 == rhs.1)
+private func accumulator(state: State!, action: Action) -> State {
+    var state = state ?? State(0)
+    switch action {
+    case let .increment(amount):
+        state.amount += amount
+    case let .decrement(amount):
+        state.amount -= amount
+    default:
+        break
+    }
+    return state
 }
+
+private struct State: Equatable {
+    var amount: Int
+
+    init(_ amount: Int) {
+        self.amount = amount
+    }
+}
+
+private enum Action: Equatable {
+    case initialize
+    case decrement(Int)
+    case increment(Int)
+    case sideEffect
+}
+
+private func makeSut(initialState: State? = nil) -> Store {
+    return Store(
+        accumulator: accumulator(state:action:),
+        initialState: initialState
+    )
+}
+
+private typealias Store = Caduceus.Store<State, Action>

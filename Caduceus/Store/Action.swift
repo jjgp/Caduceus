@@ -8,35 +8,39 @@
 
 import AWSMobileClient
 import UIKit
-//
-//  Action.swift
-//  Caduceus
-//
-//  Created by Jason Prasad on 5/4/20.
-//  Copyright © 2020 Jason Prasad. All rights reserved.
-//
 
 enum Action: Equatable {
-    // MARK: - Store
-    case initialize
-
     // MARK: - AWSMobileClient
-    case awsMobileClientInitialize(userState: String?, error: String?)
+
+    case awsMobileClientInitialize(userState: UserState?, error: String?)
 
     // MARK: - Sign In
-    case signIn(username: String?, password: String?)
+
+    case signIn(username: String, password: String)
+}
+
+extension Action {
+    var actionType: ActionType {
+        switch self {
+        case .awsMobileClientInitialize:
+            return .awsMobileClientInitialize
+        case .signIn:
+            return .signIn
+        }
+    }
 }
 
 extension Action: Codable {
+    // MARK: - Codable
+
     /// [Attribution](https://will.townsend.io/2019/codable-enums-in-swift)
-    private enum Discriminator: String, Codable, CodingKey {
-        case initialize
+    enum ActionType: String, Codable, CodingKey {
         case awsMobileClientInitialize
         case signIn
     }
 
     enum CodingKeys: String, Codable, CodingKey {
-        case discriminator
+        case actionType
         case awsMobileClientInitializeUserState
         case awsMobileClientInitializeError
         case signInUsername
@@ -45,14 +49,14 @@ extension Action: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let discriminator = try container.decode(Discriminator.self, forKey: .discriminator)
+        let discriminator = try container.decode(ActionType.self, forKey: .actionType)
 
         switch discriminator {
-        case .initialize:
-            self = .initialize
         case .awsMobileClientInitialize:
+            let userState = (try? container.decode(String.self, forKey: .awsMobileClientInitializeUserState))
+                .flatMap { UserState(rawValue: $0) }
             self = .awsMobileClientInitialize(
-                userState: try? container.decode(String.self, forKey: .awsMobileClientInitializeUserState),
+                userState: userState,
                 error: try? container.decode(String.self, forKey: .awsMobileClientInitializeError)
             )
         case .signIn:
@@ -65,16 +69,13 @@ extension Action: Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(actionType, forKey: .actionType)
 
         switch self {
-        case .initialize:
-            try container.encode(Discriminator.initialize, forKey: .discriminator)
         case let .awsMobileClientInitialize(userState, error):
-            try container.encode(Discriminator.awsMobileClientInitialize, forKey: .discriminator)
-            try container.encode(userState, forKey: .awsMobileClientInitializeUserState)
+            try container.encode(userState?.rawValue, forKey: .awsMobileClientInitializeUserState)
             try container.encode(error, forKey: .awsMobileClientInitializeError)
         case let .signIn(username, password):
-            try container.encode(Discriminator.signIn, forKey: .discriminator)
             try container.encode(username, forKey: .signInUsername)
             try container.encode(password, forKey: .signInPassword)
         }

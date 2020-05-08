@@ -14,8 +14,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // TODO: Need to disable in testing
-        bootstrapAWSDependencies()
+        launchAWS()
         return true
     }
 
@@ -44,16 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// MARK: - AWS
-
 extension AppDelegate {
-    func bootstrapAWSDependencies() {
-        #if DEBUG
-        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
-        #else
-        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.off
-        #endif
+    // MARK: - AWS
 
+    private func launchAWS() {
         let awsRegionType: AWSRegionType = ctx.constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
         let serviceConfiguration = AWSServiceConfiguration(
             region: awsRegionType,
@@ -67,10 +60,9 @@ extension AppDelegate {
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
                                             userPoolConfiguration: poolConfiguration,
                                             forKey: ctx.constants.awsCognitoUserPoolsSignInProviderKey)
-
         AWSMobileClient.default().initialize { userState, error in
             ctx.store.dispatch.accept(
-                Action.awsMobileClientInitialize(userState: userState?.rawValue, error: error?.localizedDescription)
+                .awsMobileClientInitialize(userState: userState, error: error?.localizedDescription)
             )
         }
     }
