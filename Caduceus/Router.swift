@@ -7,6 +7,7 @@
 //
 
 import Combine
+import SwiftUI
 import UIKit
 
 class Router {
@@ -17,7 +18,7 @@ class Router {
 extension Router {
     func attach(to window: UIWindow) {
         self.window = window
-        self.window?.rootViewController = LaunchViewController()
+        self.window?.rootViewController = UIHostingController(rootView: RootView())
         self.window?.makeKeyAndVisible()
     }
 }

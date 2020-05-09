@@ -38,6 +38,38 @@ class StoreTests: XCTestCase {
         store.dispatch.send(.increment)
         XCTAssertEqual(spy.values, [0, 1, 0])
     }
+
+    func testPingPong() {
+        let pingEffect = Effect<Int, Action> { dispatch, _ in
+            dispatch
+                .filter { $0 == .increment }
+                .map { _ in Action.decrement }
+                .delay(for: .milliseconds(100), scheduler: RunLoop.main, options: .none)
+        }
+        let pongEffect = Effect<Int, Action> { dispatch, _ in
+            dispatch
+                .filter { $0 == .decrement }
+                .map { _ in Action.increment }
+                .delay(for: .milliseconds(100), scheduler: RunLoop.main, options: .none)
+        }
+        let expect = expectation(description: "waiting for at least 5 ping pongs")
+        var count = 0
+        let waitForExpectationEffect = Effect<Int, Action> { _, state in
+            state
+                .sink(receiveValue: {
+                    _ = $0
+                    count += 1
+                    if count == 5 {
+                        expect.fulfill()
+                    }
+                })
+        }
+        let store = makeSut(effects: [pingEffect, pongEffect, waitForExpectationEffect])
+        let spy = PublisherSpy(store.state)
+        store.dispatch.send(.increment)
+        wait(for: [expect], timeout: 10)
+        XCTAssertEqual(spy.values, [0, 1, 0, 1, 0])
+    }
 }
 
 // MARK: - Test Helpers

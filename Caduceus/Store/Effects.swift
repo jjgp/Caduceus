@@ -31,13 +31,18 @@ extension AnyPublisher where Output == Action, Failure == Never {
 //    }
 //}
 
-func loggingEffect() -> Effect<State, Action> {
-    Effect {
+func loggingEffect<S, A>() -> Effect<S, A> {
+    #if DEBUG
+    return Effect<S, A> {
         Publishers.CombineLatest($0, $1)
             .sink(receiveValue: {
-                print("Action -> \($0)\n\t|-> State -> \(String(describing: $1))")
+                debugPrint($0, terminator: "\n\t \\-> ")
+                debugPrint($1)
             })
     }
+    #else
+    return Effect { _, _ in Empty<S, A>() }
+    #endif
 }
 
 //struct RecorderEffect: Effect {

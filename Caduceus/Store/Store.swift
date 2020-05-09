@@ -8,7 +8,7 @@
 
 import Combine
 
-class Effect<S: Equatable, A> {
+final class Effect<S: Equatable, A> {
     private var cancellable: AnyCancellable!
     private(set) var effect: Effect!
 
@@ -32,7 +32,7 @@ class Effect<S: Equatable, A> {
     typealias Effect = (AnyPublisher<A, Never>, AnyPublisher<S, Never>) -> AnyPublisher<A, Never>?
 }
 
-class Store<S: Equatable, A> {
+final class Store<S: Equatable, A> {
     private var cancellables = [AnyCancellable]()
     let dispatch = PassthroughSubject<A, Never>()
     let effects: [Effect<S, A>]
