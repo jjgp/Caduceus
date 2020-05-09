@@ -9,12 +9,17 @@
 import Combine
 
 final class Effect<S, A> {
-    private var cancellable: AnyCancellable!
+    private var cancellable: Set<AnyCancellable>!
     private(set) var effect: Effect!
 
-    init(_ sink: @escaping (AnyPublisher<A, Never>, AnyPublisher<S, Never>) -> AnyCancellable) {
+    init(_ sink: @escaping (AnyPublisher<A, Never>, AnyPublisher<S, Never>, inout Set<AnyCancellable>) -> Void) {
         effect = { [weak self] dispatch, state in
-            self?.cancellable = sink(dispatch, state)
+            guard let self = self else {
+                return nil
+            }
+
+            self.cancellable = []
+            sink(dispatch, state, &self.cancellable)
             return nil
         }
     }
@@ -35,7 +40,7 @@ final class Effect<S, A> {
 final class Store<S, A>: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     let dispatch = PassthroughSubject<A, Never>()
-    let effects: [Effect<S, A>]
+    private let effects: [Effect<S, A>]
     @Published private(set) var state: S
 
     init(accumulator: @escaping Accumulator,
@@ -52,7 +57,7 @@ final class Store<S, A>: ObservableObject {
         // result in infinite recursion.
         Publishers.MergeMany(
             effects.compactMap({
-                $0.effect(dispatch.eraseToAnyPublisher(), $state.dropFirst().eraseToAnyPublisher())
+                $0.effect(dispatch.eraseToAnyPublisher(), $state.eraseToAnyPublisher())
             })
         )
             .sink(receiveValue: { [weak self] in

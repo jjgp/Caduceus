@@ -54,7 +54,7 @@ class StoreTests: XCTestCase {
         }
         let expect = expectation(description: "waiting for at least 5 ping pongs")
         var count = 0
-        let waitForExpectationEffect = Effect<Int, Action> { _, state in
+        let waitForExpectationEffect = Effect<Int, Action> { _, state, bag in
             state
                 .sink(receiveValue: {
                     _ = $0
@@ -63,6 +63,7 @@ class StoreTests: XCTestCase {
                         expect.fulfill()
                     }
                 })
+                .store(in: &bag)
         }
         let store = makeSut(effects: [pingEffect, pongEffect, waitForExpectationEffect])
         let spy = PublisherSpy(store.$state)

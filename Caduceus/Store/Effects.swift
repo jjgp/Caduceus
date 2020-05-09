@@ -35,13 +35,14 @@ func initializeAWS(constants: Constants) -> Effect<State, Action> {
 }
 
 func signInEffect() -> Effect<State, Action> {
-    Effect { dispatch, _ in
+    Effect { dispatch, _, bag in
         dispatch
             .filter { $0.type == .signIn }
             .compactMap { $0 as? SignIn }
             .sink(receiveValue: {
                 debugPrint($0)
             })
+            .store(in: &bag)
     }
 }
 
@@ -55,6 +56,7 @@ func loggingEffect<S, A>() -> Effect<S, A> {
                 debugPrint($0, terminator: "\n\t \\-> ")
                 debugPrint($1)
             })
+            .store(in: &$2)
     }
     #else
     return Effect { _, _ in Empty<S, A>() }
