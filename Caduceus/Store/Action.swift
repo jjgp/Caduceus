@@ -11,6 +11,7 @@ import UIKit
 
 enum ActionType: String {
     case awsMobileClientInitialize
+    case signIn
 }
 
 protocol Action {

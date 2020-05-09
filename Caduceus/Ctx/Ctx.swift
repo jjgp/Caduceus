@@ -24,7 +24,8 @@ private func createContext() -> Ctx {
         initialState: State(),
         effects: [
             loggingEffect(),
-            router.effect()
+            router.effect(),
+            signInEffect()
         ]
     )
     return (

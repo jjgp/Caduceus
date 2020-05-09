@@ -9,27 +9,16 @@
 import AWSMobileClient
 import Combine
 
-extension AnyPublisher where Output == Action, Failure == Never {
+func signInEffect() -> Effect<State, Action> {
+    Effect { dispatch, _ in
+        dispatch
+            .filter { $0.type == .signIn }
+            .compactMap { $0 as? AWSMobileClientInitialize }
+            .sink(receiveValue: {
+                debugPrint($0)
+            })
+    }
 }
-
-//func signInEffect() -> Effect<State, Action> {
-//    Effect { dispatch, _ in
-//        dispatch
-//            .filter { $0.type == 
-//                if case .signIn(_, _) = action {
-//                    return true
-//                } else {
-//                    return false
-//                }
-//        }.sink(receiveValue: {
-//            if case let .signIn(username, password) = $0 {
-//                AWSMobileClient.default().signIn(username: username, password: password) { signInResult, error in
-//                    print(signInResult, error)
-//                }
-//            }
-//        })
-//    }
-//}
 
 func loggingEffect<S, A>() -> Effect<S, A> {
     #if DEBUG
