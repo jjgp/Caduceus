@@ -17,7 +17,7 @@ func accumulator(state: State, action: Action) -> State {
 // MARK: - UserState
 
 private func user(user: User, action: Action) -> User {
-    if action.type == .awsMobileClientInitialize, let action = action as? AWSMobileClientInitialize {
+    if action.type == .initializeAWSMobileClient, let action = action as? InitializeAWSMobileClient {
         var user = user
         user.isSignedIn = action.isSignedIn
         user.error = action.error

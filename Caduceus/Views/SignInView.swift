@@ -6,4 +6,20 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+
+struct SignInView: View {
+    var body: some View {
+        Section(header: Text(verbatim: .t(\.username))) {
+            Text("Hello, World!")
+        }
+    }
+}
+
+#if DEBUG
+struct SignInViewPreviews: PreviewProvider {
+    static var previews: some View {
+        SignInView()
+    }
+}
+#endif

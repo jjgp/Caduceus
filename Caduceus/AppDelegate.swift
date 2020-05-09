@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
-import AWSCognitoIdentityProvider
 import AWSMobileClient
 import UIKit
 
@@ -14,7 +13,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        launchAWS()
         return true
     }
 
@@ -40,28 +38,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         AWSDDLog.flushLog()
-    }
-}
-
-extension AppDelegate {
-    // MARK: - AWS
-
-    private func launchAWS() {
-        let awsRegionType: AWSRegionType = ctx.constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
-        let serviceConfiguration = AWSServiceConfiguration(
-            region: awsRegionType,
-            credentialsProvider: nil
-        )
-        let poolConfiguration = AWSCognitoIdentityUserPoolConfiguration(
-            clientId: ctx.constants.cognitoIdentityUserPoolAppClientId,
-            clientSecret: ctx.constants.cognitoIdentityUserPoolAppClientSecret,
-            poolId: ctx.constants.cognitoIdentityUserPoolId
-        )
-        AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
-                                            userPoolConfiguration: poolConfiguration,
-                                            forKey: ctx.constants.awsCognitoUserPoolsSignInProviderKey)
-        AWSMobileClient.default().initialize {
-            ctx.store.dispatch.send(AWSMobileClientInitialize(userState: $0, error: $1))
-        }
     }
 }

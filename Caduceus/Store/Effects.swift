@@ -9,16 +9,43 @@
 import AWSMobileClient
 import Combine
 
+// MARK: - AWS
+
+func initializeAWS(constants: Constants) -> Effect<State, Action> {
+    let awsRegionType: AWSRegionType = constants.cognitoIdentityUserPoolRegion.aws_regionTypeValue()
+    let serviceConfiguration = AWSServiceConfiguration(
+        region: awsRegionType,
+        credentialsProvider: nil
+    )
+    let poolConfiguration = AWSCognitoIdentityUserPoolConfiguration(
+        clientId: constants.cognitoIdentityUserPoolAppClientId,
+        clientSecret: constants.cognitoIdentityUserPoolAppClientSecret,
+        poolId: constants.cognitoIdentityUserPoolId
+    )
+    AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
+                                        userPoolConfiguration: poolConfiguration,
+                                        forKey: constants.awsCognitoUserPoolsSignInProviderKey)
+    return Effect { _, _ in
+        Future<Action, Never> { promise in
+            AWSMobileClient.default().initialize {
+                promise(.success(InitializeAWSMobileClient(userState: $0, error: $1)))
+            }
+        }
+    }
+}
+
 func signInEffect() -> Effect<State, Action> {
     Effect { dispatch, _ in
         dispatch
             .filter { $0.type == .signIn }
-            .compactMap { $0 as? AWSMobileClientInitialize }
+            .compactMap { $0 as? SignIn }
             .sink(receiveValue: {
                 debugPrint($0)
             })
     }
 }
+
+// MARK: - DEBUG
 
 func loggingEffect<S, A>() -> Effect<S, A> {
     #if DEBUG

@@ -18,18 +18,23 @@ typealias Ctx = (
 )
 
 private func createContext() -> Ctx {
+    let constants = Constants()
     let router = Router()
     let store = Store(
         accumulator: accumulator(state:action:),
         initialState: State(),
         effects: [
+            /* AWS */
+            initializeAWS(constants: constants),
+            signInEffect(),
+            /* DEBUG */
             loggingEffect(),
-            router.effect(),
-            signInEffect()
+            /* Navigation */
+            router.effect()
         ]
     )
     return (
-        Constants(),
+        constants,
         I18n(),
         router,
         store,
