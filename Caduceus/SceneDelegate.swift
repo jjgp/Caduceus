@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        ctx.router.attach(to: self.window!)
+        self.window?.rootViewController = UIHostingController(rootView: RootView(store: ctx.store))
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
