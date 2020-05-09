@@ -14,7 +14,7 @@ final class RootViewModel: ObservableObject {
 
     init(store: Store<State, Action>) {
         cancellable = store
-            .state
+            .$state
             .compactMap { $0.user.isSignedIn }
             .removeDuplicates()
             .assign(to: \.isSignedIn, on: self)

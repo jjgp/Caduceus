@@ -13,15 +13,15 @@ import XCTest
 class StoreTests: XCTestCase {
     func testInitialState() {
         let sut = makeSut()
-        let spy = PublisherSpy(sut.state)
+        let spy = PublisherSpy(sut.$state)
         XCTAssertEqual(spy.values, [0])
     }
 
     func testActionsUpdateState() {
         let sut = makeSut()
-        let spy = PublisherSpy(sut.state)
+        let spy = PublisherSpy(sut.$state)
         sut.dispatch.send(.decrement)
-        let anotherSpy = PublisherSpy(sut.state)
+        let anotherSpy = PublisherSpy(sut.$state)
         sut.dispatch.send(.increment)
         XCTAssertEqual(spy.values, [0, -1, 0])
         XCTAssertEqual(anotherSpy.values, [-1, 0])
@@ -34,7 +34,7 @@ class StoreTests: XCTestCase {
                 .map { _ in Action.decrement }
         }
         let store = makeSut(effects: [effect])
-        let spy = PublisherSpy(store.state)
+        let spy = PublisherSpy(store.$state)
         store.dispatch.send(.increment)
         XCTAssertEqual(spy.values, [0, 1, 0])
     }
@@ -65,7 +65,7 @@ class StoreTests: XCTestCase {
                 })
         }
         let store = makeSut(effects: [pingEffect, pongEffect, waitForExpectationEffect])
-        let spy = PublisherSpy(store.state)
+        let spy = PublisherSpy(store.$state)
         store.dispatch.send(.increment)
         wait(for: [expect], timeout: 10)
         XCTAssertEqual(spy.values, [0, 1, 0, 1, 0])

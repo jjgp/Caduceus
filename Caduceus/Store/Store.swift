@@ -32,30 +32,28 @@ final class Effect<S: Equatable, A> {
     typealias Effect = (AnyPublisher<A, Never>, AnyPublisher<S, Never>) -> AnyPublisher<A, Never>?
 }
 
-final class Store<S: Equatable, A> {
+final class Store<S: Equatable, A>: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     let dispatch = PassthroughSubject<A, Never>()
     let effects: [Effect<S, A>]
-    let state: AnyPublisher<S, Never>
+    @Published private(set) var state: S
 
     init(accumulator: @escaping Accumulator,
          initialState: S,
          effects: [Effect<S, A>] = []) {
-        let state = CurrentValueSubject<S, Never>(initialState)
-        self.state = state.removeDuplicates().eraseToAnyPublisher()
+        state = initialState
+        self.effects = effects
         dispatch
             .scan(initialState, accumulator)
-            .sink(receiveValue: {
-                state.send($0)
-            })
+            .removeDuplicates()
+            .assign(to: \.state, on: self)
             .store(in: &cancellableSet)
         // Note, this could potentially be dangerous as it leads to a circular publisher. In RxJS and RxSwift, a
         // circular publisher may need to be scheduled on another queue. An Effect that simply returns `dispatch` will
         // result in infinite recursion.
-        self.effects = effects
         Publishers.MergeMany(
             effects.compactMap({
-                $0.effect(dispatch.eraseToAnyPublisher(), self.state)
+                $0.effect(dispatch.eraseToAnyPublisher(), $state.eraseToAnyPublisher())
             })
         )
             .sink(receiveValue: { [weak self] in
