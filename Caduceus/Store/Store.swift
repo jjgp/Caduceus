@@ -8,7 +8,7 @@
 
 import Combine
 
-final class Effect<S: Equatable, A> {
+final class Effect<S, A> {
     private var cancellable: AnyCancellable!
     private(set) var effect: Effect!
 
@@ -32,7 +32,7 @@ final class Effect<S: Equatable, A> {
     typealias Effect = (AnyPublisher<A, Never>, AnyPublisher<S, Never>) -> AnyPublisher<A, Never>?
 }
 
-final class Store<S: Equatable, A>: ObservableObject {
+final class Store<S, A>: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     let dispatch = PassthroughSubject<A, Never>()
     let effects: [Effect<S, A>]
@@ -45,7 +45,6 @@ final class Store<S: Equatable, A>: ObservableObject {
         self.effects = effects
         dispatch
             .scan(initialState, accumulator)
-            .removeDuplicates()
             .assign(to: \.state, on: self)
             .store(in: &cancellableSet)
         // Note, this could potentially be dangerous as it leads to a circular publisher. In RxJS and RxSwift, a
@@ -53,7 +52,7 @@ final class Store<S: Equatable, A>: ObservableObject {
         // result in infinite recursion.
         Publishers.MergeMany(
             effects.compactMap({
-                $0.effect(dispatch.eraseToAnyPublisher(), $state.eraseToAnyPublisher())
+                $0.effect(dispatch.eraseToAnyPublisher(), $state.dropFirst().eraseToAnyPublisher())
             })
         )
             .sink(receiveValue: { [weak self] in
