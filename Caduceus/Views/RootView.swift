@@ -16,13 +16,12 @@ struct RootView: View {
         self.viewModel = viewModel
     }
 
+    @ViewBuilder
     var body: some View {
-        Group {
-            if viewModel.isSignedIn == true {
-                Text("Signed In!")
-            } else {
-                MapStore(SignInViewModel.init, content: SignInView.init)
-            }
+        if viewModel.isSignedIn == true {
+            Text("Signed In!")
+        } else {
+            MapStore(SignInViewModel.init, content: SignInView.init)
         }
     }
 }
