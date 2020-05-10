@@ -9,8 +9,10 @@
 import Foundation
 
 extension String {
+    static let i18n = I18n()
+
     static func t(_ key: KeyPath<I18n, String>, _ arguments: CVarArg...) -> String {
-        return ctx.i18n[keyPath: key]
+        return i18n[keyPath: key]
     }
 }
 
