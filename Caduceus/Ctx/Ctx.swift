@@ -7,30 +7,12 @@
 //
 
 // MARK: - SwiftLint Disable
-// swiftlint:disable immutable_ctx
 
-import Combine
-import CombineStore
-
-final class Ctx: ObservableObject {
-    let constants = Constants()
+final class Ctx {
     let i18n = I18n()
-    @Published var store: Store<State, Action>
     let styleGuide = StyleGuide()
 
-    init() {
-        store = Store(
-            accumulator: accumulator(state:action:),
-            initialState: State(),
-            effects: [
-                /* AWS */
-                initializeAWS(constants: constants),
-                signInEffect(),
-                /* DEBUG */
-                loggingEffect()
-            ]
-        )
-    }
+    init() {}
 }
 
 var ctx = Ctx()

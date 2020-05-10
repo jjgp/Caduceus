@@ -18,12 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = UIHostingController(
-            rootView: MapStore(
-                RootViewModel.init,
-                content: RootView.init
-            ).provide(store: ctx.store)
+        let store = Store(
+            accumulator: accumulator(state:action:),
+            initialState: State(),
+            effects: [
+                /* AWS */
+                .initializeAWS(),
+                .signInEffect(),
+                /* DEBUG */
+                .loggingEffect()
+            ]
         )
+        let rootView = MapStore(
+            store,
+            transform: RootViewModel.init,
+            content: RootView.init
+        )
+        self.window?.rootViewController = UIHostingController(rootView: rootView)
         self.window?.makeKeyAndVisible()
     }
 
