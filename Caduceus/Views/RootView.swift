@@ -9,20 +9,14 @@
 import SwiftUI
 
 struct RootView: View {
-    let store: Store<State, Action>
-    @ObservedObject private var rootViewModel: RootViewModel
-
-    init(store: Store<State, Action>) {
-        self.store = store
-        rootViewModel = RootViewModel(store: store)
-    }
+    @EnvironmentObject private var ctx: Ctx
 
     var body: some View {
         Group {
-            if rootViewModel.isSignedIn {
+            if ctx.store.state.user.isSignedIn == true {
                 Text("Signed In!")
             } else {
-                SignInView(store: store)
+                SignInView()
             }
         }
     }
@@ -31,7 +25,7 @@ struct RootView: View {
 #if DEBUG
 struct RootViewPreviews: PreviewProvider {
     static var previews: some View {
-        RootView(store: ctx.store)
+        RootView().environmentObject(ctx)
     }
 }
 #endif

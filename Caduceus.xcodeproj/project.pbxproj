@@ -20,6 +20,7 @@
 		B7B08269245DA33700423BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */; };
 		B7B67C0924672E5400754D1F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0824672E5400754D1F /* SignInViewModel.swift */; };
 		B7B67C0B24672E7C00754D1F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0A24672E7C00754D1F /* RootViewModel.swift */; };
+		B7B67C0D24675AE500754D1F /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0C24675AE500754D1F /* Effect.swift */; };
 		B7E8AFFA245EF48200877194 /* Ctx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFF9245EF48200877194 /* Ctx.swift */; };
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B005245F892800877194 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B004245F892800877194 /* Constants.swift */; };
@@ -62,6 +63,7 @@
 		B7B08275245DA33700423BD9 /* InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoTests.plist; sourceTree = "<group>"; };
 		B7B67C0824672E5400754D1F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B7B67C0A24672E7C00754D1F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		B7B67C0C24675AE500754D1F /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		B7E8AFF9245EF48200877194 /* Ctx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ctx.swift; sourceTree = "<group>"; };
 		B7E8AFFF245F1B6B00877194 /* DKVL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKVL.swift; sourceTree = "<group>"; };
 		B7E8B004245F892800877194 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				B7E8B01F2460F7B600877194 /* Accumulators.swift */,
 				B7E8B018246092DA00877194 /* Action.swift */,
+				B7B67C0C24675AE500754D1F /* Effect.swift */,
 				B703B0DC2464CC4C00E67E58 /* Effects.swift */,
 				B7E8B01A246092E300877194 /* State.swift */,
 				B7E8B015246074AB00877194 /* Store.swift */,
@@ -413,6 +416,7 @@
 				B7E8B016246074AB00877194 /* Store.swift in Sources */,
 				B7E8AFFA245EF48200877194 /* Ctx.swift in Sources */,
 				B7E8B005245F892800877194 /* Constants.swift in Sources */,
+				B7B67C0D24675AE500754D1F /* Effect.swift in Sources */,
 				B7E8B007245F894E00877194 /* I18n.swift in Sources */,
 				B78DC6922466DC6C00D1D053 /* RootView.swift in Sources */,
 				B7E8B0202460F7B600877194 /* Accumulators.swift in Sources */,

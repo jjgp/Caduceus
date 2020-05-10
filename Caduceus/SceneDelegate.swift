@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = UIHostingController(rootView: RootView(store: ctx.store))
+        self.window?.rootViewController = UIHostingController(
+            rootView: RootView().environmentObject(ctx)
+        )
         self.window?.makeKeyAndVisible()
     }
 

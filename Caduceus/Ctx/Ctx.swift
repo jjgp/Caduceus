@@ -9,32 +9,27 @@
 // MARK: - SwiftLint Disable
 // swiftlint:disable immutable_ctx
 
-typealias Ctx = (
-    constants: Constants,
-    i18n: I18n,
-    store: Store<State, Action>,
-    styleGuide: StyleGuide
-)
+import Combine
 
-private func createContext() -> Ctx {
+final class Ctx: ObservableObject {
     let constants = Constants()
-    let store = Store(
-        accumulator: accumulator(state:action:),
-        initialState: State(),
-        effects: [
-            /* AWS */
-            initializeAWS(constants: constants),
-            signInEffect(),
-            /* DEBUG */
-            loggingEffect()
-        ]
-    )
-    return (
-        constants,
-        I18n(),
-        store,
-        StyleGuide()
-    )
+    let i18n = I18n()
+    @Published var store: Store<State, Action>
+    let styleGuide = StyleGuide()
+
+    init() {
+        store = Store(
+            accumulator: accumulator(state:action:),
+            initialState: State(),
+            effects: [
+                /* AWS */
+                initializeAWS(constants: constants),
+                signInEffect(),
+                /* DEBUG */
+                loggingEffect()
+            ]
+        )
+    }
 }
 
-var ctx = createContext()
+var ctx = Ctx()

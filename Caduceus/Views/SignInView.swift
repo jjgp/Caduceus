@@ -9,11 +9,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @ObservedObject private var signInViewModel: SignInViewModel
-
-    init(store: Store<State, Action>) {
-        signInViewModel = SignInViewModel(store: store)
-    }
+    @EnvironmentObject private var ctx: Ctx
 
     var body: some View {
         Form {
@@ -24,7 +20,7 @@ struct SignInView: View {
                 Text("Hello, World!")
             }
             Section {
-                Button(action: signInViewModel.signInAction) {
+                Button(action: { print("Sign In") }) {
                     Text(verbatim: .t(\.signIn))
                 }
             }
@@ -35,7 +31,7 @@ struct SignInView: View {
 #if DEBUG
 struct SignInViewPreviews: PreviewProvider {
     static var previews: some View {
-        SignInView(store: ctx.store)
+        SignInView().environmentObject(ctx)
     }
 }
 #endif
