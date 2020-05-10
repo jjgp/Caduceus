@@ -1,5 +1,5 @@
 //
-//  Actions.swift
+//  AppAction.swift
 //  Caduceus
 //
 //  Created by Jason Prasad on 5/4/20.
@@ -7,7 +7,6 @@
 //
 
 import AWSMobileClient
-import UIKit
 
 enum AppActionType: String {
     case initializeAWSMobileClient
@@ -34,13 +33,3 @@ struct SignIn: AppAction {
     let username: String
     let password: String
 }
-
-//enum Action: Equatable {
-//    // MARK: - AWSMobileClient
-//
-//    case awsMobileClientInitialize(userState: UserState?, error: String?)
-//
-//    // MARK: - Sign In
-//
-//    case signIn(username: String, password: String)
-//}

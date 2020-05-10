@@ -26,8 +26,8 @@
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B009245F89F100877194 /* StyleGuide.swift */; };
-		B7E8B019246092DA00877194 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* Action.swift */; };
-		B7E8B01B246092E300877194 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01A246092E300877194 /* State.swift */; };
+		B7E8B019246092DA00877194 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* AppAction.swift */; };
+		B7E8B01B246092E300877194 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01A246092E300877194 /* AppState.swift */; };
 		B7E8B0202460F7B600877194 /* Accumulators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01F2460F7B600877194 /* Accumulators.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,8 +66,8 @@
 		B7E8AFFF245F1B6B00877194 /* DKVL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKVL.swift; sourceTree = "<group>"; };
 		B7E8B006245F894E00877194 /* I18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		B7E8B009245F89F100877194 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
-		B7E8B018246092DA00877194 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		B7E8B01A246092E300877194 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		B7E8B018246092DA00877194 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		B7E8B01A246092E300877194 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7E8B01F2460F7B600877194 /* Accumulators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accumulators.swift; sourceTree = "<group>"; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,9 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				B7E8B01F2460F7B600877194 /* Accumulators.swift */,
-				B7E8B018246092DA00877194 /* Action.swift */,
+				B7E8B018246092DA00877194 /* AppAction.swift */,
 				B703B0DC2464CC4C00E67E58 /* Effects.swift */,
-				B7E8B01A246092E300877194 /* State.swift */,
+				B7E8B01A246092E300877194 /* AppState.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -404,11 +404,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7B67C0B24672E7C00754D1F /* RootViewModel.swift in Sources */,
-				B7E8B019246092DA00877194 /* Action.swift in Sources */,
+				B7E8B019246092DA00877194 /* AppAction.swift in Sources */,
 				B7B67C0F2468788000754D1F /* Box.swift in Sources */,
 				B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */,
 				B7B0825D245DA33400423BD9 /* AppDelegate.swift in Sources */,
-				B7E8B01B246092E300877194 /* State.swift in Sources */,
+				B7E8B01B246092E300877194 /* AppState.swift in Sources */,
 				B7B67C0924672E5400754D1F /* SignInViewModel.swift in Sources */,
 				B78DC6902466DC5600D1D053 /* SignInView.swift in Sources */,
 				B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */,
