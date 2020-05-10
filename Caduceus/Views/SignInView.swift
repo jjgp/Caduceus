@@ -27,6 +27,7 @@ struct SignInView: View {
                 Button(action: viewModel.signInAction) {
                     Text(verbatim: .t(\.signIn))
                 }
+                .disabled(!self.viewModel.isFormValid)
             }
         }
     }

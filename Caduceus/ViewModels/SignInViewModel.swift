@@ -11,6 +11,7 @@ import CombineStore
 
 final class SignInViewModel: ObservableObject {
     let store: Store<AppState, AppAction>
+    @Published var isFormValid = false
 
     init(store: Store<AppState, AppAction>) {
         self.store = store
