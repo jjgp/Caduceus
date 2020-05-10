@@ -10,11 +10,13 @@ import Combine
 import CombineStore
 
 final class SignInViewModel: ObservableObject {
-    var cancellable: AnyCancellable!
+    let store: Store<State, Action>
 
     init(store: Store<State, Action>) {
+        self.store = store
     }
 
     func signInAction() {
+        store.send(SignIn(username: "", password: ""))
     }
 }

@@ -1,20 +1,3 @@
-custom_rules:
-  immutable_view_model:
-    included: ".*\\.swift"
-    excluded: "CaduceusTests/*\\.swift"
-    name: "Immutable ViewModel"
-    regex: "(.viewModel =)"
-    capture_group: 0
-    message: "ViewModels should not be modified outside of initialization or coordinators."
-    severity: error
-  immutable_ctx:
-    included: ".*\\.swift"
-    excluded: "CaduceusTests/*\\.swift"
-    name: "Immutable CTX"
-    regex: "(ctx =)"
-    capture_group: 0
-    message: "CTX should not be modified in source."
-    severity: error
 excluded:
   Pods
 opt_in_rules:

@@ -40,9 +40,7 @@ func signInEffect() -> Effect<State, Action> {
         dispatch
             .filter { $0.type == .signIn }
             .compactMap { $0 as? SignIn }
-            .sink(receiveValue: {
-                debugPrint($0)
-            })
+            .sink(receiveValue: { _ in })
             .store(in: &bag)
     }
 }
@@ -52,7 +50,7 @@ func signInEffect() -> Effect<State, Action> {
 func loggingEffect<S, A>() -> Effect<S, A> {
     #if DEBUG
     return Effect<S, A> {
-        Publishers.CombineLatest($0, $1)
+        Publishers.Zip($0, $1)
             .sink(receiveValue: {
                 debugPrint($0, terminator: "\n\t \\-> ")
                 debugPrint($1)

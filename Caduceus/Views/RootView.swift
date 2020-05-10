@@ -6,24 +6,29 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import CombineStore
 import SwiftUI
 
 struct RootView: View {
+    @ObservedObject private var viewModel: RootViewModel
+
+    init(viewModel: RootViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         Group {
-            if ctx.store.state.user.isSignedIn == true {
+            if viewModel.isSignedIn == true {
                 Text("Signed In!")
             } else {
-                SignInView()
+                MapStore(SignInViewModel.init, content: SignInView.init)
             }
         }
     }
 }
 
-#if DEBUG
-struct RootViewPreviews: PreviewProvider {
-    static var previews: some View {
-        RootView().environmentObject(ctx)
-    }
-}
-#endif
+//#if DEBUG
+//struct RootViewPreviews: PreviewProvider {
+//    static var previews: some View {}
+//}
+//#endif

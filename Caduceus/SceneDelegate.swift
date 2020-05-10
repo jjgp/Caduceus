@@ -19,7 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
         self.window?.rootViewController = UIHostingController(
-            rootView: RootView().provide(store: ctx.store)
+            rootView: MapStore(
+                RootViewModel.init,
+                content: RootView.init
+            ).provide(store: ctx.store)
         )
         self.window?.makeKeyAndVisible()
     }
