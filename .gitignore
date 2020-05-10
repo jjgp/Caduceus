@@ -4,6 +4,7 @@
 **/*.xccheckout
 **/*.xcscmblueprint
 build/
-CTX/InfoPlistPrefix.h
+Ctx/PreprocessInfoPlist.h
 DerivedData/
 Pods/
+swiftpm/

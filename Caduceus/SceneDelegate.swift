@@ -6,25 +6,9 @@
 //  Copyright © 2020 Jason Prasad. All rights reserved.
 //
 
+import CombineStore
 import SwiftUI
 import UIKit
-
-extension View {
-    func provide<S, A>(store: Store<S, A>) -> some View {
-        environment(\.store, store)
-    }
-}
-
-private struct StoreKey: EnvironmentKey {
-    static let defaultValue: Any = ()
-}
-
-extension EnvironmentValues {
-    var store: Any {
-        get { self[StoreKey.self] }
-        set { self[StoreKey.self] = newValue }
-    }
-}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?

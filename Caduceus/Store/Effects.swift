@@ -8,6 +8,7 @@
 
 import AWSMobileClient
 import Combine
+import CombineStore
 
 // MARK: - AWS
 

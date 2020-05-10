@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,17 +20,15 @@
 		B7B08269245DA33700423BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B08267245DA33700423BD9 /* LaunchScreen.storyboard */; };
 		B7B67C0924672E5400754D1F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0824672E5400754D1F /* SignInViewModel.swift */; };
 		B7B67C0B24672E7C00754D1F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0A24672E7C00754D1F /* RootViewModel.swift */; };
-		B7B67C0D24675AE500754D1F /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0C24675AE500754D1F /* Effect.swift */; };
 		B7B67C0F2468788000754D1F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0E2468788000754D1F /* Box.swift */; };
+		B7B67C1224687E7200754D1F /* CombineStore in Frameworks */ = {isa = PBXBuildFile; productRef = B7B67C1124687E7200754D1F /* CombineStore */; };
 		B7E8AFFA245EF48200877194 /* Ctx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFF9245EF48200877194 /* Ctx.swift */; };
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B005245F892800877194 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B004245F892800877194 /* Constants.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B00A245F89F100877194 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B009245F89F100877194 /* StyleGuide.swift */; };
-		B7E8B016246074AB00877194 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B015246074AB00877194 /* Store.swift */; };
 		B7E8B019246092DA00877194 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* Action.swift */; };
 		B7E8B01B246092E300877194 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01A246092E300877194 /* State.swift */; };
-		B7E8B01E2460C41100877194 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01D2460C41100877194 /* StoreTests.swift */; };
 		B7E8B0202460F7B600877194 /* Accumulators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B01F2460F7B600877194 /* Accumulators.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,17 +62,14 @@
 		B7B08275245DA33700423BD9 /* InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoTests.plist; sourceTree = "<group>"; };
 		B7B67C0824672E5400754D1F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B7B67C0A24672E7C00754D1F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
-		B7B67C0C24675AE500754D1F /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		B7B67C0E2468788000754D1F /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		B7E8AFF9245EF48200877194 /* Ctx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ctx.swift; sourceTree = "<group>"; };
 		B7E8AFFF245F1B6B00877194 /* DKVL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKVL.swift; sourceTree = "<group>"; };
 		B7E8B004245F892800877194 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B7E8B006245F894E00877194 /* I18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		B7E8B009245F89F100877194 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
-		B7E8B015246074AB00877194 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		B7E8B018246092DA00877194 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		B7E8B01A246092E300877194 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
-		B7E8B01D2460C41100877194 /* StoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		B7E8B01F2460F7B600877194 /* Accumulators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accumulators.swift; sourceTree = "<group>"; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7B67C1224687E7200754D1F /* CombineStore in Frameworks */,
 				05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,11 +197,8 @@
 			children = (
 				B7E8B01F2460F7B600877194 /* Accumulators.swift */,
 				B7E8B018246092DA00877194 /* Action.swift */,
-				B7B67C0C24675AE500754D1F /* Effect.swift */,
 				B703B0DC2464CC4C00E67E58 /* Effects.swift */,
 				B7E8B01A246092E300877194 /* State.swift */,
-				B7E8B015246074AB00877194 /* Store.swift */,
-				B7E8B01D2460C41100877194 /* StoreTests.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -238,6 +231,9 @@
 			dependencies = (
 			);
 			name = Caduceus;
+			packageProductDependencies = (
+				B7B67C1124687E7200754D1F /* CombineStore */,
+			);
 			productName = Caduceus;
 			productReference = B7B08259245DA33400423BD9 /* Caduceus.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +286,9 @@
 				Base,
 			);
 			mainGroup = B7B08250245DA33400423BD9;
+			packageReferences = (
+				B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */,
+			);
 			productRefGroup = B7B0825A245DA33400423BD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -417,10 +416,8 @@
 				B78DC6902466DC5600D1D053 /* SignInView.swift in Sources */,
 				B77A0B3D245DD982005AE743 /* PreviewWrapper.swift in Sources */,
 				B703B0DD2464CC4C00E67E58 /* Effects.swift in Sources */,
-				B7E8B016246074AB00877194 /* Store.swift in Sources */,
 				B7E8AFFA245EF48200877194 /* Ctx.swift in Sources */,
 				B7E8B005245F892800877194 /* Constants.swift in Sources */,
-				B7B67C0D24675AE500754D1F /* Effect.swift in Sources */,
 				B7E8B007245F894E00877194 /* I18n.swift in Sources */,
 				B78DC6922466DC6C00D1D053 /* RootView.swift in Sources */,
 				B7E8B0202460F7B600877194 /* Accumulators.swift in Sources */,
@@ -433,7 +430,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7E8B01E2460C41100877194 /* StoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +693,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:jjgp/CombineStore.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7B67C1124687E7200754D1F /* CombineStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */;
+			productName = CombineStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7B08251245DA33400423BD9 /* Project object */;
 }
