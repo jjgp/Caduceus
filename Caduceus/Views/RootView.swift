@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct RootView: View {
-    @EnvironmentObject private var ctx: Ctx
-
     var body: some View {
         Group {
             if ctx.store.state.user.isSignedIn == true {

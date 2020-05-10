@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct SignInView: View {
-    @EnvironmentObject private var ctx: Ctx
-
     var body: some View {
         Form {
             Section(header: Text(verbatim: .t(\.username))) {

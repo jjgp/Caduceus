@@ -9,6 +9,23 @@
 import SwiftUI
 import UIKit
 
+extension View {
+    func provide<S, A>(store: Store<S, A>) -> some View {
+        environment(\.store, store)
+    }
+}
+
+private struct StoreKey: EnvironmentKey {
+    static let defaultValue: Any = ()
+}
+
+extension EnvironmentValues {
+    var store: Any {
+        get { self[StoreKey.self] }
+        set { self[StoreKey.self] = newValue }
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
@@ -18,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
         self.window?.rootViewController = UIHostingController(
-            rootView: RootView().environmentObject(ctx)
+            rootView: RootView().provide(store: ctx.store)
         )
         self.window?.makeKeyAndVisible()
     }
