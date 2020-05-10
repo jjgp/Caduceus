@@ -13,7 +13,7 @@ final class RootViewModel: ObservableObject {
     var cancellable: AnyCancellable!
     @Published var isSignedIn = false
 
-    init(store: Store<State, Action>) {
+    init(store: Store<AppState, AppAction>) {
         cancellable = store
             .$state
             .compactMap { $0.user.isSignedIn }

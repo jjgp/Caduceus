@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         let store = Store(
             accumulator: accumulator(state:action:),
-            initialState: State(),
+            initialState: AppState(),
             effects: [
                 /* AWS */
                 .initializeAWS(),

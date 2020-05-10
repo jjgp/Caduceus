@@ -10,7 +10,7 @@ import AWSMobileClient
 import Combine
 import CombineStore
 
-extension Effect where S == State, A == Action {
+extension Effect where S == AppState, A == AppAction {
     // MARK: - AWS
 
     static func initializeAWS() -> Self {
@@ -36,7 +36,7 @@ extension Effect where S == State, A == Action {
                                             userPoolConfiguration: poolConfiguration,
                                             forKey: awsCognitoUserPoolsSignInProviderKey)
         return Self { _, _ in
-            Future<Action, Never> { promise in
+            Future<AppAction, Never> { promise in
                 AWSMobileClient.default().initialize {
                     promise(.success(InitializeAWSMobileClient(userState: $0, error: $1)))
                 }
@@ -55,7 +55,7 @@ extension Effect where S == State, A == Action {
     }
 }
 
-extension Effect where S == State, A == Action {
+extension Effect where S == AppState, A == AppAction {
     // MARK: - DEBUG
 
     static func loggingEffect() -> Self {

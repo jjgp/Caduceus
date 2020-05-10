@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - State
 
-struct State: Equatable {
+struct AppState: Equatable {
     let user: User
 
     init(user: User = User()) {

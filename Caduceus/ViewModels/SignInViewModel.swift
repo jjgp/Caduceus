@@ -10,9 +10,9 @@ import Combine
 import CombineStore
 
 final class SignInViewModel: ObservableObject {
-    let store: Store<State, Action>
+    let store: Store<AppState, AppAction>
 
-    init(store: Store<State, Action>) {
+    init(store: Store<AppState, AppAction>) {
         self.store = store
     }
 

@@ -9,17 +9,17 @@
 import AWSMobileClient
 import UIKit
 
-enum ActionType: String {
+enum AppActionType: String {
     case initializeAWSMobileClient
     case signIn
 }
 
-protocol Action {
-    var type: ActionType { get }
+protocol AppAction {
+    var type: AppActionType { get }
 }
 
-struct InitializeAWSMobileClient: Action {
-    let type: ActionType = .initializeAWSMobileClient
+struct InitializeAWSMobileClient: AppAction {
+    let type: AppActionType = .initializeAWSMobileClient
     let isSignedIn: Bool
     let error: String?
 
@@ -29,8 +29,8 @@ struct InitializeAWSMobileClient: Action {
     }
 }
 
-struct SignIn: Action {
-    let type: ActionType = .signIn
+struct SignIn: AppAction {
+    let type: AppActionType = .signIn
     let username: String
     let password: String
 }
