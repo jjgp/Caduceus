@@ -26,7 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 .initializeAWS(),
                 .signInEffect(),
                 /* DEBUG */
-                .loggingEffect()
+                .loggingEffect(),
+                /* Zoom */
+                .initializeZoom()
             ]
         )
         let rootView = MapStore(

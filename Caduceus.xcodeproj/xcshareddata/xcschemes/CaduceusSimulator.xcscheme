@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B7ECE6112469763500DA1B86"
-               BuildableName = "CaduceusSimulator.app"
+               BuildableName = "Caduceus.app"
                BlueprintName = "CaduceusSimulator"
                ReferencedContainer = "container:Caduceus.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7ECE6112469763500DA1B86"
-            BuildableName = "CaduceusSimulator.app"
+            BuildableName = "Caduceus.app"
             BlueprintName = "CaduceusSimulator"
             ReferencedContainer = "container:Caduceus.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7ECE6112469763500DA1B86"
-            BuildableName = "CaduceusSimulator.app"
+            BuildableName = "Caduceus.app"
             BlueprintName = "CaduceusSimulator"
             ReferencedContainer = "container:Caduceus.xcodeproj">
          </BuildableReference>

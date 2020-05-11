@@ -9,6 +9,7 @@
 import AWSMobileClient
 import Combine
 import CombineStore
+import MobileRTC
 
 extension Effect where S == AppState, A == AppAction {
     // MARK: - AWS
@@ -21,7 +22,6 @@ extension Effect where S == AppState, A == AppAction {
         let cognitoIdentityUserPoolAppClientId = infoDictionary.AWS!.CognitoUserPool!.Default!.AppClientId!.stringValue!
         let cognitoIdentityUserPoolAppClientSecret = infoDictionary.AWS!.CognitoUserPool!.Default!.AppClientSecret!
             .stringValue!
-
         let awsRegionType: AWSRegionType = cognitoIdentityUserPoolRegion.aws_regionTypeValue()
         let serviceConfiguration = AWSServiceConfiguration(
             region: awsRegionType,
@@ -69,7 +69,7 @@ extension Effect where S == AppState, A == AppAction {
                 .store(in: &$2)
         }
         #else
-        return Self { _, _ in Empty<S, A>() }
+        return Self { _, _, _ in }
         #endif
     }
 
@@ -78,4 +78,26 @@ extension Effect where S == AppState, A == AppAction {
     //        return nil
     //    }
     //}
+}
+
+extension Effect where S == AppState, A == AppAction {
+    // MARK: - Zoom
+
+    static func initializeZoom() -> Self {
+        let infoDictionary = DKVL(Bundle.main.infoDictionary!)!
+        let context = MobileRTCSDKInitContext()
+        context.domain = infoDictionary.ZOOM!.Domain!.stringValue!
+        #if DEBUG
+        context.enableLog = true
+        #endif
+        context.locale = MobileRTC_ZoomLocale.default
+        let _ = MobileRTC.shared().initialize(context)
+        // TODO: send result
+        if let authService = MobileRTC.shared().getAuthService() {
+            authService.clientKey = infoDictionary.ZOOM!.SDKKey!.stringValue!
+            authService.clientSecret = infoDictionary.ZOOM!.SDKSecret!.stringValue!
+            authService.sdkAuth()
+        }
+        return Self { _, _, _ in }
+    }
 }

@@ -93,5 +93,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>ZOOM</key>
+	<dict>
+		<key>SDKKey</key>
+		<string>ZOOM_SDKKEY</string>
+		<key>SDKSecret</key>
+		<string>ZOOM_SDKSECRET</string>
+		<key>Domain</key>
+		<string>ZOOM_DOMAIN</string>
+	</dict>
 </dict>
 </plist>

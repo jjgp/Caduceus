@@ -7,12 +7,18 @@
 //
 
 import AWSMobileClient
+import MobileRTC
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        #if DEBUG
+        AWSDDLog.sharedInstance.logLevel = .verbose
+        #else
+        AWSDDLog.sharedInstance.logLevel = .off
+        #endif
         return true
     }
 
@@ -28,15 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Lifecycle
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        MobileRTC.shared().appDidBecomeActive()
+    }
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         AWSDDLog.flushLog()
+        MobileRTC.shared().appDidEnterBackgroud()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         AWSDDLog.flushLog()
+        MobileRTC.shared().appWillResignActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         AWSDDLog.flushLog()
+        MobileRTC.shared().appWillTerminate()
     }
 }
