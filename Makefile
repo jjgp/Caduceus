@@ -23,6 +23,7 @@ download_zoom_sdk:
 	curl -sL https://github.com/zoom/zoom-sdk-ios/releases/download/v${ZOOM_SDK_VERSION}/ios-mobilertc-all-${ZOOM_SDK_VERSION}-n.zip -o zoom-sdk-simulator.zip; \
 	curl -sL https://github.com/zoom/zoom-sdk-ios/archive/v${ZOOM_SDK_VERSION}.zip -o zoom-sdk-device.zip; \
 	unzip -qq zoom-sdk-simulator.zip -d zoom-sdk-simulator; \
-	unzip -qq zoom-sdk-device.zip 'zoom-sdk-ios-${ZOOM_SDK_VERSION}/*' -d zoom-sdk-device; \
+	unzip -qq zoom-sdk-device.zip; \
+	mv zoom-sdk-ios-${ZOOM_SDK_VERSION} zoom-sdk-device; \
 	$(call popd);
 

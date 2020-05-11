@@ -21,6 +21,16 @@
 		B7B67C0924672E5400754D1F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0824672E5400754D1F /* SignInViewModel.swift */; };
 		B7B67C0B24672E7C00754D1F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0A24672E7C00754D1F /* RootViewModel.swift */; };
 		B7B67C0F2468788000754D1F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0E2468788000754D1F /* Box.swift */; };
+		B7D41BA6246991150073819F /* MobileRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA3246991150073819F /* MobileRTC.framework */; };
+		B7D41BA7246991150073819F /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA3246991150073819F /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BA8246991150073819F /* MobileRTCResources.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = B7D41BA4246991150073819F /* MobileRTCResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BA9246991150073819F /* MobileRTCScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */; };
+		B7D41BAA246991150073819F /* MobileRTCScreenShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BAD2469913F0073819F /* MobileRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B9B246990DE0073819F /* MobileRTC.framework */; };
+		B7D41BAE2469913F0073819F /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B9B246990DE0073819F /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BAF2469913F0073819F /* MobileRTCResources.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = B7D41B9A246990DE0073819F /* MobileRTCResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BB02469913F0073819F /* MobileRTCScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */; };
+		B7D41BB12469913F0073819F /* MobileRTCScreenShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B019246092DA00877194 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* AppAction.swift */; };
@@ -56,6 +66,55 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B7D41BAB246991150073819F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7D41BAA246991150073819F /* MobileRTCScreenShare.framework in Embed Frameworks */,
+				B7D41BA7246991150073819F /* MobileRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7D41BAC246991150073819F /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B7D41BA8246991150073819F /* MobileRTCResources.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7D41BB22469913F0073819F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7D41BB12469913F0073819F /* MobileRTCScreenShare.framework in Embed Frameworks */,
+				B7D41BAE2469913F0073819F /* MobileRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7D41BB32469913F0073819F /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B7D41BAF2469913F0073819F /* MobileRTCResources.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaduceusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F05040715A56A7CE564E35E /* Pods-Caduceus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.release.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +136,12 @@
 		B7B67C0824672E5400754D1F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		B7B67C0A24672E7C00754D1F /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		B7B67C0E2468788000754D1F /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTCScreenShare.framework; path = "vendor/zoom-sdk-device/lib/MobileRTCScreenShare.framework"; sourceTree = "<group>"; };
+		B7D41B9A246990DE0073819F /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = "vendor/zoom-sdk-device/lib/MobileRTCResources.bundle"; sourceTree = "<group>"; };
+		B7D41B9B246990DE0073819F /* MobileRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTC.framework; path = "vendor/zoom-sdk-device/lib/MobileRTC.framework"; sourceTree = "<group>"; };
+		B7D41BA3246991150073819F /* MobileRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTC.framework; path = "vendor/zoom-sdk-simulator/lib/MobileRTC.framework"; sourceTree = "<group>"; };
+		B7D41BA4246991150073819F /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = "vendor/zoom-sdk-simulator/lib/MobileRTCResources.bundle"; sourceTree = "<group>"; };
+		B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTCScreenShare.framework; path = "vendor/zoom-sdk-simulator/lib/MobileRTCScreenShare.framework"; sourceTree = "<group>"; };
 		B7E8AFFF245F1B6B00877194 /* DKVL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKVL.swift; sourceTree = "<group>"; };
 		B7E8B006245F894E00877194 /* I18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		B7E8B018246092DA00877194 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
@@ -92,7 +157,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D41BAD2469913F0073819F /* MobileRTC.framework in Frameworks */,
 				05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */,
+				B7D41BB02469913F0073819F /* MobileRTCScreenShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D41BA6246991150073819F /* MobileRTC.framework in Frameworks */,
 				B7ECE6232469763500DA1B86 /* Pods_Caduceus.framework in Frameworks */,
+				B7D41BA9246991150073819F /* MobileRTCScreenShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +187,12 @@
 		01BD5AAFAF20F285394AB08D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7D41B9B246990DE0073819F /* MobileRTC.framework */,
+				B7D41B9A246990DE0073819F /* MobileRTCResources.bundle */,
+				B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */,
+				B7D41BA3246991150073819F /* MobileRTC.framework */,
+				B7D41BA4246991150073819F /* MobileRTCResources.bundle */,
+				B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */,
 				7ECB22E7985285D2D6A56B6D /* Pods_Caduceus.framework */,
 				43B71C5000B2ACC4A96AEF1F /* Pods_CaduceusTests.framework */,
 			);
@@ -148,9 +223,9 @@
 			isa = PBXGroup;
 			children = (
 				B7B0825B245DA33400423BD9 /* Caduceus */,
-				B7B0825A245DA33400423BD9 /* Products */,
-				613767C8D1E0EF4831062637 /* Pods */,
 				01BD5AAFAF20F285394AB08D /* Frameworks */,
+				613767C8D1E0EF4831062637 /* Pods */,
+				B7B0825A245DA33400423BD9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +317,8 @@
 				B7B08257245DA33400423BD9 /* Resources */,
 				B7AD9FE2245DC4A4007D100C /* SwiftLint */,
 				95FD4B64B58635F8BDA985B6 /* [CP] Embed Pods Frameworks */,
+				B7D41BB22469913F0073819F /* Embed Frameworks */,
+				B7D41BB32469913F0073819F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -283,6 +360,8 @@
 				B7ECE6242469763500DA1B86 /* Resources */,
 				B7ECE6282469763500DA1B86 /* SwiftLint */,
 				B7ECE6292469763500DA1B86 /* [CP] Embed Pods Frameworks */,
+				B7D41BAB246991150073819F /* Embed Frameworks */,
+				B7D41BAC246991150073819F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -700,6 +779,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = Caduceus/Previews;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/zoom-sdk-device/lib",
+				);
 				INFOPLIST_FILE = Caduceus/Info.plist;
 				INFOPLIST_PREFIX_HEADER = Caduceus/PreprocessInfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
@@ -723,6 +807,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = Caduceus/Previews;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/zoom-sdk-device/lib",
+				);
 				INFOPLIST_FILE = Caduceus/Info.plist;
 				INFOPLIST_PREFIX_HEADER = Caduceus/PreprocessInfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
@@ -793,6 +882,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = Caduceus/Previews;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/zoom-sdk-simulator/lib",
+				);
 				INFOPLIST_FILE = Caduceus/Info.plist;
 				INFOPLIST_PREFIX_HEADER = Caduceus/PreprocessInfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
@@ -816,6 +910,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = Caduceus/Previews;
 				DEVELOPMENT_TEAM = SZBVKVY4W2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vendor/zoom-sdk-simulator/lib",
+				);
 				INFOPLIST_FILE = Caduceus/Info.plist;
 				INFOPLIST_PREFIX_HEADER = Caduceus/PreprocessInfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
