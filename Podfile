@@ -9,10 +9,8 @@ target 'Caduceus' do
   use_frameworks!
 
   pod 'AWSCognitoIdentityProvider'
-  pod 'AWSKinesisVideo'
-  pod 'AWSKinesisVideoSignaling'
   pod 'AWSMobileClient'
-  pod 'CombineStore', :path => 'Libraries/CombineStore'
+  pod 'CombineStore', :path => 'libraries/CombineStore'
 
   target 'CaduceusTests' do
     inherit! :search_paths

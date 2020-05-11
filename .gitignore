@@ -7,4 +7,5 @@ build/
 DerivedData/
 Pods/
 swiftpm/
+vendor/
 PreprocessInfoPlist.h

@@ -22,13 +22,12 @@ public struct MapStore<T, S, A, Content>: View where Content: View {
         self.transform = transform
     }
 
+    @ViewBuilder
     public var body: some View {
         if store != nil {
-            return ViewBuilder.buildEither(first: content(transform(store!)).provide(store: store!) as! TrueContent)
-                as _ConditionalContent<TrueContent, Content>
+            content(transform(store!)).provide(store: store!)
         } else {
-            return ViewBuilder.buildEither(second: content(transform(environmentStore as! Store<S, A>)))
-                as _ConditionalContent<TrueContent, Content>
+            content(transform(environmentStore as! Store<S, A>))
         }
     }
 

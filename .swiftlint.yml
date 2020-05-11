@@ -1,6 +1,7 @@
 excluded:
-  - Libraries
+  - libraries
   - Pods
+  - vendor
 opt_in_rules:
   - fatal_error_message
   - sorted_imports
