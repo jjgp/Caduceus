@@ -147,7 +147,7 @@
 		B7E8B018246092DA00877194 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		B7E8B01A246092E300877194 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B7E8B01F2460F7B600877194 /* Accumulators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accumulators.swift; sourceTree = "<group>"; };
-		B7ECE62D2469763500DA1B86 /* CaduceusSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaduceusSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7ECE62D2469763500DA1B86 /* Caduceus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caduceus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C387BFE78D04D35384F89065 /* Pods-CaduceusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaduceusTests.debug.xcconfig"; path = "Target Support Files/Pods-CaduceusTests/Pods-CaduceusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E21248B50244EF4577886904 /* Pods-Caduceus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caduceus.debug.xcconfig"; path = "Target Support Files/Pods-Caduceus/Pods-Caduceus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,7 +234,7 @@
 			children = (
 				B7B08259245DA33400423BD9 /* Caduceus.app */,
 				B7B0826F245DA33700423BD9 /* CaduceusTests.xctest */,
-				B7ECE62D2469763500DA1B86 /* CaduceusSimulator.app */,
+				B7ECE62D2469763500DA1B86 /* Caduceus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 			packageProductDependencies = (
 			);
 			productName = Caduceus;
-			productReference = B7ECE62D2469763500DA1B86 /* CaduceusSimulator.app */;
+			productReference = B7ECE62D2469763500DA1B86 /* Caduceus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -896,7 +896,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-function-bodies=200";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjgp.Caduceus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Caduceus;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -924,7 +924,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-function-bodies=200";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jjgp.Caduceus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Caduceus;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
