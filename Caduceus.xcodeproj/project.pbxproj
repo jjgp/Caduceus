@@ -23,14 +23,10 @@
 		B7B67C0F2468788000754D1F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0E2468788000754D1F /* Box.swift */; };
 		B7D41BA6246991150073819F /* MobileRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA3246991150073819F /* MobileRTC.framework */; };
 		B7D41BA7246991150073819F /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA3246991150073819F /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B7D41BA8246991150073819F /* MobileRTCResources.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = B7D41BA4246991150073819F /* MobileRTCResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B7D41BA9246991150073819F /* MobileRTCScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */; };
-		B7D41BAA246991150073819F /* MobileRTCScreenShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41BA5246991150073819F /* MobileRTCScreenShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7D41BAD2469913F0073819F /* MobileRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B9B246990DE0073819F /* MobileRTC.framework */; };
 		B7D41BAE2469913F0073819F /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B9B246990DE0073819F /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B7D41BAF2469913F0073819F /* MobileRTCResources.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = B7D41B9A246990DE0073819F /* MobileRTCResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B7D41BB02469913F0073819F /* MobileRTCScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */; };
-		B7D41BB12469913F0073819F /* MobileRTCScreenShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7D41B99246990DE0073819F /* MobileRTCScreenShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7D41BB52469B1840073819F /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7D41B9A246990DE0073819F /* MobileRTCResources.bundle */; };
+		B7D41BB72469B18F0073819F /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7D41BA4246991150073819F /* MobileRTCResources.bundle */; };
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B019246092DA00877194 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* AppAction.swift */; };
@@ -73,21 +69,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B7D41BAA246991150073819F /* MobileRTCScreenShare.framework in Embed Frameworks */,
 				B7D41BA7246991150073819F /* MobileRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7D41BAC246991150073819F /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B7D41BA8246991150073819F /* MobileRTCResources.bundle in Embed PlugIns */,
-			);
-			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B7D41BB22469913F0073819F /* Embed Frameworks */ = {
@@ -96,21 +80,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B7D41BB12469913F0073819F /* MobileRTCScreenShare.framework in Embed Frameworks */,
 				B7D41BAE2469913F0073819F /* MobileRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7D41BB32469913F0073819F /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B7D41BAF2469913F0073819F /* MobileRTCResources.bundle in Embed PlugIns */,
-			);
-			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -159,7 +131,6 @@
 			files = (
 				B7D41BAD2469913F0073819F /* MobileRTC.framework in Frameworks */,
 				05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */,
-				B7D41BB02469913F0073819F /* MobileRTCScreenShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +148,6 @@
 			files = (
 				B7D41BA6246991150073819F /* MobileRTC.framework in Frameworks */,
 				B7ECE6232469763500DA1B86 /* Pods_Caduceus.framework in Frameworks */,
-				B7D41BA9246991150073819F /* MobileRTCScreenShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +288,6 @@
 				B7AD9FE2245DC4A4007D100C /* SwiftLint */,
 				95FD4B64B58635F8BDA985B6 /* [CP] Embed Pods Frameworks */,
 				B7D41BB22469913F0073819F /* Embed Frameworks */,
-				B7D41BB32469913F0073819F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -361,7 +330,6 @@
 				B7ECE6282469763500DA1B86 /* SwiftLint */,
 				B7ECE6292469763500DA1B86 /* [CP] Embed Pods Frameworks */,
 				B7D41BAB246991150073819F /* Embed Frameworks */,
-				B7D41BAC246991150073819F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -421,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D41BB52469B1840073819F /* MobileRTCResources.bundle in Resources */,
 				B78DC6952466DD0C00D1D053 /* PreviewAssets.xcassets in Resources */,
 				B7B08269245DA33700423BD9 /* LaunchScreen.storyboard in Resources */,
 				B7B08266245DA33700423BD9 /* Assets.xcassets in Resources */,
@@ -438,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7D41BB72469B18F0073819F /* MobileRTCResources.bundle in Resources */,
 				B7ECE6252469763500DA1B86 /* PreviewAssets.xcassets in Resources */,
 				B7ECE6262469763500DA1B86 /* LaunchScreen.storyboard in Resources */,
 				B7ECE6272469763500DA1B86 /* Assets.xcassets in Resources */,
