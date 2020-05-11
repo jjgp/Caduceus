@@ -1,4 +1,5 @@
 PODS_ROOT=Pods/
+ZOOM_SDK_VERSION=4.6.21666.0428
 
 define pushd 
 	command pushd $1 > /dev/null
@@ -19,9 +20,9 @@ lint_autocorrect:
 download_zoom_sdk:
 	$(call pushd,vendor); \
 	rm -rf zoom-sdk-*; \
-	curl -sL https://github.com/zoom/zoom-sdk-ios/releases/download/v4.6.21666.0428/ios-mobilertc-all-4.6.21666.0428-n.zip -o zoom-sdk-simulator.zip; \
-	curl -sL https://api.github.com/repos/zoom/zoom-sdk-ios/zipball/v4.6.21666.0428 -o zoom-sdk-device.zip; \
+	curl -sL https://github.com/zoom/zoom-sdk-ios/releases/download/v${ZOOM_SDK_VERSION}/ios-mobilertc-all-${ZOOM_SDK_VERSION}-n.zip -o zoom-sdk-simulator.zip; \
+	curl -sL https://github.com/zoom/zoom-sdk-ios/archive/v${ZOOM_SDK_VERSION}.zip -o zoom-sdk-device.zip; \
 	unzip -qq zoom-sdk-simulator.zip -d zoom-sdk-simulator; \
-	unzip -qq zoom-sdk-device.zip -d zoom-sdk-device; \
+	unzip -qq zoom-sdk-device.zip 'zoom-sdk-ios-${ZOOM_SDK_VERSION}/*' -d zoom-sdk-device; \
 	$(call popd);
 
