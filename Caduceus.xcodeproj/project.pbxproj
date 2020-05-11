@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		B7B67C0924672E5400754D1F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0824672E5400754D1F /* SignInViewModel.swift */; };
 		B7B67C0B24672E7C00754D1F /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0A24672E7C00754D1F /* RootViewModel.swift */; };
 		B7B67C0F2468788000754D1F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B67C0E2468788000754D1F /* Box.swift */; };
-		B7B67C1224687E7200754D1F /* CombineStore in Frameworks */ = {isa = PBXBuildFile; productRef = B7B67C1124687E7200754D1F /* CombineStore */; };
 		B7E8B000245F1B6B00877194 /* DKVL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8AFFF245F1B6B00877194 /* DKVL.swift */; };
 		B7E8B007245F894E00877194 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B006245F894E00877194 /* I18n.swift */; };
 		B7E8B019246092DA00877194 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E8B018246092DA00877194 /* AppAction.swift */; };
@@ -74,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7B67C1224687E7200754D1F /* CombineStore in Frameworks */,
 				05D637DDC8EF12AF5D1F9B13 /* Pods_Caduceus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,7 +221,6 @@
 			);
 			name = Caduceus;
 			packageProductDependencies = (
-				B7B67C1124687E7200754D1F /* CombineStore */,
 			);
 			productName = Caduceus;
 			productReference = B7B08259245DA33400423BD9 /* Caduceus.app */;
@@ -278,7 +275,6 @@
 			);
 			mainGroup = B7B08250245DA33400423BD9;
 			packageReferences = (
-				B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */,
 			);
 			productRefGroup = B7B0825A245DA33400423BD9 /* Products */;
 			projectDirPath = "";
@@ -681,25 +677,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjgp/CombineStore.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B7B67C1124687E7200754D1F /* CombineStore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B7B67C1024687E7200754D1F /* XCRemoteSwiftPackageReference "CombineStore" */;
-			productName = CombineStore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7B08251245DA33400423BD9 /* Project object */;
 }

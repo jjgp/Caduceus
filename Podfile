@@ -12,6 +12,7 @@ target 'Caduceus' do
   pod 'AWSKinesisVideo'
   pod 'AWSKinesisVideoSignaling'
   pod 'AWSMobileClient'
+  pod 'CombineStore', :path => 'Libraries/CombineStore'
 
   target 'CaduceusTests' do
     inherit! :search_paths

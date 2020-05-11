@@ -13,6 +13,7 @@ PODS:
   - AWSMobileClient (2.13.3):
     - AWSAuthCore (= 2.13.3)
     - AWSCognitoIdentityProvider (= 2.13.3)
+  - CombineStore (1.0.0)
   - SwiftLint (0.34.0)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - AWSKinesisVideo
   - AWSKinesisVideoSignaling
   - AWSMobileClient
+  - CombineStore (from `Libraries/CombineStore`)
   - SwiftLint
 
 SPEC REPOS:
@@ -33,6 +35,10 @@ SPEC REPOS:
     - AWSMobileClient
     - SwiftLint
 
+EXTERNAL SOURCES:
+  CombineStore:
+    :path: Libraries/CombineStore
+
 SPEC CHECKSUMS:
   AWSAuthCore: 93b71ac38596e75790015c7299c725bb09ae1d5f
   AWSCognitoIdentityProvider: 3480819d983e78eda7a43e141273756784be30cb
@@ -41,8 +47,9 @@ SPEC CHECKSUMS:
   AWSKinesisVideo: e52bd5da816234da368c05d7b666fdfb2898b2d6
   AWSKinesisVideoSignaling: c6e08e4ead28d6fee616da1bcfdd7aef2dd39897
   AWSMobileClient: 9149b664d1a89279bd49d36598c7afc38a63d7d1
+  CombineStore: 923f2159709e55c288d7a165be34a2db020c7eca
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: 17c5b02682d173459056932ea4dcabde0dadd61a
+PODFILE CHECKSUM: 470d43722e85af135a9c2e2d61044bdf16392f18
 
 COCOAPODS: 1.9.1

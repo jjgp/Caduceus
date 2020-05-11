@@ -1,5 +1,6 @@
 excluded:
-  Pods
+  - Libraries
+  - Pods
 opt_in_rules:
   - fatal_error_message
   - sorted_imports
